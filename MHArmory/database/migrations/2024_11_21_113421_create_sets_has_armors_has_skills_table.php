@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sets_has_armors_has_skills', function (Blueprint $table) {
+        Schema::create('sets_has_armors', function (Blueprint $table) {
             $table->foreignId('id_sets')->references('id')->on('sets')->onDelete('cascade');
             $table->foreignId('id_armors')->references('id')->on('armors')->onDelete('cascade');
-            $table->foreignId('id_skills')->references('id')->on('skills')->onDelete('cascade');
 
-            $table->primary(['id_sets', 'id_armors', 'id_skills']);
+            $table->primary(['id_sets', 'id_armors']);
         });
     }
 
