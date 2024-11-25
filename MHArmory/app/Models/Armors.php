@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Skills;
+use App\Models\Sets;
 
 class Armors extends Model
 {
