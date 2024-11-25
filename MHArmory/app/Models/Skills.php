@@ -13,9 +13,14 @@ class Skills extends Model
         'effect',
     ];
 
+    public function armors()
+    {
+        return $this->belongsToMany(Armors::class, 'armors_have_skills')->withPivot('level');
+    }
+
     public function getEffect($level) {
         
     }
 
-    
+
 }
