@@ -12,4 +12,8 @@ class Sets extends Model
         'name'
     ];
 
+    public function armors()
+    {
+        return $this->belongsToMany(Armors::class, 'sets_have_armors');
+    }
 }
