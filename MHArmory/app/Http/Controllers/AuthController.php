@@ -11,13 +11,13 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'max:255',
             'email' =>'required|unique:users|max:255',
             'password' => 'required|min:6'
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'name' => $request->name  ?? 'anónimo',
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
@@ -29,7 +29,10 @@ class AuthController extends Controller
         ]);
     }
 
-    public function login(Request $request){}
+    public function login(Request $request)
+    {
+        
+    }
 
     public function logout(Request $request){}
 }
