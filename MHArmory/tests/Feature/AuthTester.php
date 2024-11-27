@@ -60,6 +60,11 @@ class AuthTester extends TestCase
             'password' => $user->password
         ]);
 
+        $response->assertStatus(200);
+
+        $response->assertJsonStructure(['token']);
+
         
+
     }
 }
