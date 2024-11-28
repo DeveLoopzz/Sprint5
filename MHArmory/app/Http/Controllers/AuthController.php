@@ -12,7 +12,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'max:255',
-            'email' =>'required|unique:users|max:255',
+            'email' =>'required|unique:users|max:255|',
             'password' => 'required|min:6'
         ]);
 
@@ -22,16 +22,25 @@ class AuthController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        $token = $user->createToken('auth_token')->accessToken;
-
-        return response([
-            'token' => $token
-        ]);
+        return response()->json($user);
     }
 
     public function login(Request $request)
     {
-        
+        $request->validate([
+            'email' =>'required|max:255|email',
+            'password' => 'required|min:6'
+        ]);
+
+        $foundUser = User::where('email', $request->email)->first();
+
+        if(isset($foundUser)) {
+            $token = $foundUser->createToken('auth_token')->accessToken;
+
+        }
+        else{
+            return "Invalid user credentials";
+        }
     }
 
     public function logout(Request $request){}
