@@ -35,11 +35,18 @@ class AuthController extends Controller
         $foundUser = User::where('email', $request->email)->first();
 
         if(isset($foundUser)) {
-            $token = $foundUser->createToken('auth_token')->accessToken;
-
+            if(Hash::check($request->password, $foundUser->password)){ 
+                $token = $foundUser->createToken('auth_token')->accessToken;
+                return response()->json([
+                    'token' => $token,
+                    'message' => 'Login Successful'
+                ], 200);
+            }
         }
         else{
-            return "Invalid user credentials";
+            return response()->json([
+                'message' => 'Invalid credentials'
+            ],401);
         }
     }
 
