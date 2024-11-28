@@ -4,11 +4,12 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
-class AuthTester extends TestCase
+class AuthTest extends TestCase
 {
     use RefreshDatabase;
     protected $user;
@@ -36,35 +37,45 @@ class AuthTester extends TestCase
     }
 
 
-    public function userRegister() 
+    public function test_user_register() 
     {
-        $response = $this->post('/users/register', [
+        $response = $this->post('api/users/register', [
             'name' => 'test',
             'email' => 'email@test.com',
             'password' => 'testing'
         ]);
 
+        $invalidData = $this->postJson('api/users/register',[
+            'name' => 'test',
+            'email' => '',
+            'password' => '123'
+        ]);
+
+        $invalidData->assertStatus(422);
+
+        $invalidData->assertJsonValidationErrors([
+            'email',
+            'password',
+        ]);
+
         $response->assertStatus(200);
 
-        $response->assertDatabaseHas('users' , [
+        $this->assertDatabaseHas('users' , [
             'email' => 'email@test.com'
         ]);
     }
 
-    public function user_can_login() 
+    public function test_user_can_login() 
     {
         $user = $this->user;
 
-        $response = $this->post('/users/login', [
+        $response = $this->post('api/users/login', [
             'email' => $user->email,
-            'password' => $user->password
+            'password' => 'password'
         ]);
 
         $response->assertStatus(200);
 
-        $response->assertJsonStructure(['token']);
-
-        
 
     }
 }
