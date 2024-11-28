@@ -45,6 +45,19 @@ class AuthTest extends TestCase
             'password' => 'testing'
         ]);
 
+        $invalidData = $this->postJson('api/users/register',[
+            'name' => 'test',
+            'email' => '',
+            'password' => '123'
+        ]);
+
+        $invalidData->assertStatus(422);
+
+        $invalidData->assertJsonValidationErrors([
+            'email',
+            'password',
+        ]);
+
         $response->assertStatus(200);
 
         $this->assertDatabaseHas('users' , [
