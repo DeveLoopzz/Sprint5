@@ -74,7 +74,7 @@ class AuthTest extends TestCase
             'message'
         ])
                  ->assertJson([
-            'message' => 'Login Successful'
+            'message' => 'Logged in Successfuly'
         ]);
     }
 
@@ -89,4 +89,27 @@ class AuthTest extends TestCase
             'message' => 'Invalid credentials'
         ]);
     }
+
+    public function test_user_can_logout() 
+    {
+        $user = $this->user;
+        $response = $this->post('api/users/login', [
+            'email' => $user->email,
+            'password' => 'password'
+        ]);
+
+        $token = $response->json('token');
+
+        $responseLogout = $this->post('api/users/logout',[], [
+            'Authorization' => 'Bearer ' . $token
+        ]);
+
+        
+        $response->assertStatus(200);
+        $responseLogout->assertStatus(200)
+                       ->assertJson([
+                        'message' => 'Logged out Successfully'
+                       ]);
+    }
+
 }
