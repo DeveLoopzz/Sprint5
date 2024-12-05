@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSkillRequest;
 use App\Http\Requests\UpdateSkillRequest;
 use App\Models\Skills;
-use Illuminate\Http\Request;
 
 class SkillsController extends Controller
 {
@@ -37,9 +36,19 @@ class SkillsController extends Controller
         ],200);
     }
 
-    public function deleteSkill()
+    public function deleteSkill($id)
     {
+        $skill = Skills::Find($id);
+        if(!$skill){
+            return response()->json([
+                'message' => 'Not Found'
+            ], 404);
+        }
+        $skill->delete();
 
+        return response()->json([
+            'message' => 'Skill deleted successfully'
+        ], 200);
     }
 
     public function readSkills()

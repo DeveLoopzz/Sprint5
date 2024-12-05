@@ -104,4 +104,23 @@ class SkillsTest extends TestCase
                  ]);
     }
 
+    public function test_skill_can_be_deleted()
+    {
+        $skill = $this->skill;
+        $response = $this->delete("api/skills/delete/{$skill->id}");
+        $response->assertStatus(200);
+        $this->assertDatabaseMissing('skills', [
+                    'id' => $skill->id
+                 ]);
+    }
+
+    public function test_skill_cant_be_deleted()
+    {
+        $response = $this->delete("api/skills/delete/12324569");
+        $response->assertStatus(404)
+                 ->assertJson([
+                    'message' => 'Not Found'
+                 ]);
+    }
+
 }
