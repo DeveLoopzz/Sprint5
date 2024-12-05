@@ -4,8 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Skills;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
@@ -25,18 +23,18 @@ class SkillsTest extends TestCase
             '--personal' => true,
         ]);
         $this->skill = Skills::create([
-            'name' => 'attack bonus',
-            'effect' => json_encode(['1' => 'attack + 5',
-             '2' =>'attack +10'])
+            'name' => 'defense bonus',
+            'effect' => json_encode(["1" => "defense + 5",
+             "2" =>"defense +10"])
         ]);
     }
 
     public function test_skills_create()
     {
         $response = $this->post('api/skills/create', [
-            'name' => 'attack bonus',
-            'effect' => json_encode(['1' => 'attack +5',
-             '2' =>'attack +10'])
+            'name' => "attack bonus",
+            'effect' => json_encode(["1" => "attack +5",
+             "2" =>"attack +10"])
         ]);
 
         $response->assertStatus(200)
@@ -47,6 +45,63 @@ class SkillsTest extends TestCase
         $this->assertDatabaseHas('skills', [
             'name' => 'attack bonus'
         ]);
+    }
+
+    public function test_skills_create_invalid_json() 
+    {
+        $response = $this->post('api/skills/create', [
+            'name' => 'attack bonus',
+            'effect' => 'attack +5'
+        ]);
+
+        $response->assertStatus(422)
+                 ->assertJson([
+                    'message' => 'Validation Failed'
+                 ]);
+    }
+
+    public function test_skills_create_repeated_value()
+    {
+        $response = $this->post('api/skills/create', [
+            'name' => 'defense bonus',
+            'effect' => '{"1" => "defense + 5",
+             "2" =>"defense +10"}'
+        ]);
+
+        $response->assertStatus(422)
+                 ->assertJson([
+                    'message' => 'Validation Failed'
+                 ]);
+    }
+
+    public function test_skills_update() 
+    {
+        $skill = $this->skill;
+        $response = $this->putJson("api/skills/update/{$skill->id}", [
+            'name' => 'new defense bonus'
+        ]);
+
+        $response->assertStatus(200)
+                 ->assertJson([
+                    'message' => 'Skill updated successfully'
+                 ]);
+        $this->assertDatabaseHas('skills', [
+            'name' => 'new defense bonus'
+        ]);
+    }
+
+    public function test_skills_update_invalid_data() 
+    {
+        $skill = $this->skill;
+        $response = $this->putJson("api/skills/update/{$skill->id}", [
+            'name' => 1,
+            'effect' => ''
+        ]);
+
+        $response->assertStatus(422)
+                 ->assertJson([
+                    'message' => 'Validation Failed'
+                 ]);
     }
 
 }

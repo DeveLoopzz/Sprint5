@@ -13,8 +13,8 @@ Route::middleware('auth:api')->group(function() {
 });
 //SKILLS ROUTES
 Route::post('skills/create', [SkillsController::class, 'createSkill']);
-Route::post('skills/update/{id}', [SkillsController::class, 'updateSkill']);
-Route::post('skills/delete/{id}', [SkillsController::class, 'deleteSkill']);
-Route::post('skills', [SkillsController::class], 'readSkills');
+Route::put('skills/update/{id}', [SkillsController::class, 'updateSkill']);
+Route::delete('skills/delete/{id}', [SkillsController::class, 'deleteSkill']);
+Route::get('skills', [SkillsController::class], 'readSkills');
 
 
