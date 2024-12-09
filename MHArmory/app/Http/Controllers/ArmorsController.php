@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 
 class ArmorsController extends Controller
 {
-    public function createArmor() {}
+    public function createArmor() 
+    {}
 
-    public function updateArmor() {}
+    public function updateArmor() 
+    {}
 
-    public function deleteArmor() {}
+    public function deleteArmor() 
+    {}
 
-    public function readArmor() {}
+    public function readArmor() 
+    {}
 
 }

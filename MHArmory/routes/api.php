@@ -1,9 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArmorsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SkillsController;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 
 Route::post('users/register', [AuthController::class, 'register']);
@@ -16,5 +15,14 @@ Route::post('skills/create', [SkillsController::class, 'createSkill']);
 Route::put('skills/update/{id}', [SkillsController::class, 'updateSkill']);
 Route::delete('skills/delete/{id}', [SkillsController::class, 'deleteSkill']);
 Route::get('skills', [SkillsController::class, 'readSkills']);
+
+//ARMORS ROUTES
+
+Route::post('armors/create', [ArmorsController::class, 'createArmors']);
+Route::put('armors/update/{id}', [ArmorsController::class, 'updateArmors']);
+Route::delete('armors/delete/{id}', [ArmorsController::class, 'deleteArmors']);
+Route::get('armors', [ArmorsController::class, 'readArmors']);
+
+
 
 
