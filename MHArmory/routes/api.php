@@ -15,6 +15,6 @@ Route::middleware('auth:api')->group(function() {
 Route::post('skills/create', [SkillsController::class, 'createSkill']);
 Route::put('skills/update/{id}', [SkillsController::class, 'updateSkill']);
 Route::delete('skills/delete/{id}', [SkillsController::class, 'deleteSkill']);
-Route::get('skills', [SkillsController::class], 'readSkills');
+Route::get('skills', [SkillsController::class, 'readSkills']);
 
 

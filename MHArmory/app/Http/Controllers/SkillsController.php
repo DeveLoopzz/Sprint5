@@ -53,6 +53,17 @@ class SkillsController extends Controller
 
     public function readSkills()
     {
+        $skills = Skills::get();
 
-    }
+        if(!$skills){
+            return response()->json([
+                'message' => 'Not Found'
+            ], 404);
+        }
+
+        return response()->json([
+            'data' => $skills,
+            'message' => 'Skills List'
+        ], 200);
+    }   
 }
