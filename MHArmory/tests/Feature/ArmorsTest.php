@@ -30,7 +30,7 @@ class ArmorsTest extends TestCase
     public function test_create_armor()
     {
         $response = $this->post('api/armors/create', [
-            'name' => 'Iron Helmet',
+            'name' => 'Ironic Helmet',
             'type' => 'Helmet',
             'skills' => [
                 ['id' => $this->skills[0]->id, 'level' => 1 ],
@@ -43,6 +43,23 @@ class ArmorsTest extends TestCase
                     'message' => 'Armor Created Successfully'
                  ]);
 
-        dd($response);
+    }
+
+    public function test_invalid_armor_create()
+    {
+        $response = $this->post('api/armors/create', [
+            'name' => 'Iron Helmet',
+            'type' => 'Helmet',
+            'skills' => [
+                ['id' => $this->skills[0]->id, 'level' => 1 ],
+                ['id' => $this->skills[1]->id, 'level' => 2 ],
+                ['id' => $this->skills[2]->id, 'level' => 3 ],
+            ],
+        ]);
+
+        $response->assertStatus(422)
+        ->assertJson([
+           'message' => 'Validation Failed'
+        ]);
     }
 }

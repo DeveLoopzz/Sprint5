@@ -32,7 +32,7 @@ class SkillsTest extends TestCase
     public function test_skills_create()
     {
         $response = $this->post('api/skills/create', [
-            'name' => "attack bonuses",
+            'name' => "attack bonuses plus",
             'effect' => json_encode(["1" => "attack +2",
              "2" =>"attack +10"])
         ]);
