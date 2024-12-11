@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreArmorsRequest;
 use App\Http\Requests\UpdateArmorsRequest;
 use App\Models\Armors;
-use App\Models\ArmorsHaveSkills;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ArmorsController extends Controller
@@ -80,7 +78,6 @@ class ArmorsController extends Controller
     public function readArmor() 
     {
         $armors = Armors::get();
-
         return response()->json([
             'message' => 'Armor List',
             'data' => $armors,

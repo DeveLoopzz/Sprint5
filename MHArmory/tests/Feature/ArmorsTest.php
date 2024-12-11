@@ -6,6 +6,7 @@ use App\Models\Armors;
 use App\Models\Skills;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class ArmorsTest extends TestCase
@@ -158,5 +159,4 @@ class ArmorsTest extends TestCase
             'data'
         ]);
     }
-
 }
