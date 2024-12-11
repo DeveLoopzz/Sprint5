@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Armors;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Skills extends Model
 {
+    use HasFactory;
     protected $table = 'skills';
     public $timestamps = false;
     protected $fillable = [
