@@ -17,11 +17,10 @@ Route::delete('skills/delete/{id}', [SkillsController::class, 'deleteSkill']);
 Route::get('skills', [SkillsController::class, 'readSkills']);
 
 //ARMORS ROUTES
-
-Route::post('armors/create', [ArmorsController::class, 'createArmors']);
-Route::put('armors/update/{id}', [ArmorsController::class, 'updateArmors']);
-Route::delete('armors/delete/{id}', [ArmorsController::class, 'deleteArmors']);
-Route::get('armors', [ArmorsController::class, 'readArmors']);
+Route::post('armors/create', [ArmorsController::class, 'createArmor']);
+Route::put('armors/update/{id}', [ArmorsController::class, 'updateArmor']);
+Route::delete('armors/delete/{id}', [ArmorsController::class, 'deleteArmor']);
+Route::get('armors', [ArmorsController::class, 'readArmor']);
 
 
 

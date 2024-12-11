@@ -25,7 +25,10 @@ class StoreArmorsRequest extends FormRequest
     {
         return [
             'name' => 'max:255|unique:armors|required',
-            'type' => ['required', 'in:Helmet,Chest,Gloves,Faulds,Boots']
+            'type' => ['required', 'in:Helmet,Chest,Gloves,Faulds,Boots'],
+            'skills' => 'required|array|max:3',
+            'skills.*' =>'exists:skills,id',
+            'skills.*.level' => 'required|integer|min:1|max:3'
         ];
     }
 

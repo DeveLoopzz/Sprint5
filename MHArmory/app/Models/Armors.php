@@ -15,6 +15,9 @@ class Armors extends Model
         'name',
         'type',
     ];
+    protected $casts = [
+        'effect' => 'array',  
+    ];
 
     public function sets() 
     {
