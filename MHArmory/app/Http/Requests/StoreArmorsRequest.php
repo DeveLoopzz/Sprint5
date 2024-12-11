@@ -24,11 +24,11 @@ class StoreArmorsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'max:255|unique:armors|required',
+            'name' => 'required|max:255|unique:armors',
             'type' => ['required', 'in:Helmet,Chest,Gloves,Faulds,Boots'],
             'skills' => 'required|array|max:3',
-            'skills.*' =>'exists:skills,id',
-            'skills.*.level' => 'required|integer|min:1|max:3'
+            'skills.*.level' => 'required|integer|min:1|max:3',
+            'skills.*.id' => 'required|exists:skills,id',
         ];
     }
 

@@ -18,18 +18,16 @@ class ArmorsController extends Controller
                 'name' => $data['name'],
                 'type' => $data['type']
             ]);
-            foreach($data['skills'] as $skillId => $skillData) {
+            foreach($data['skills'] as $skillData) {
                 DB::table('armors_have_skills')->insert([
                     'id_armors' => $armor->id,
-                    'id_skills' => $skillId,
+                    'id_skills' => $skillData['id'],
                     'level' => $skillData['level'] ?? 1
                 ]);
             }
-            
         }); 
-
         return response()->json([
-            'message' => 'Armor Created Successfully'
+            'message' => 'Armor Created Successfully',
         ], 200);
     }
 

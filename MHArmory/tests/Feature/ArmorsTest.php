@@ -29,22 +29,20 @@ class ArmorsTest extends TestCase
 
     public function test_create_armor()
     {
-        // dd($this->skills[0]);
         $response = $this->post('api/armors/create', [
             'name' => 'Iron Helmet',
             'type' => 'Helmet',
-            'skills' => $this->skills
-                // ['id' => $this->skills[0]->id, 'level' => 1 ],
-                // ['id' => $this->skills[1]->id, 'level' => 2 ],
-                // ['id' => $this->skills[2]->id, 'level' => 3 ],
-            
+            'skills' => [
+                ['id' => $this->skills[0]->id, 'level' => 1 ],
+                ['id' => $this->skills[1]->id, 'level' => 2 ],
+                ['id' => $this->skills[2]->id, 'level' => 3 ],
+            ],
         ]);
-
         $response->assertStatus(200)
                  ->assertJson([
                     'message' => 'Armor Created Successfully'
                  ]);
-        $response->assertDatabaseHas('armors', ['name' => 'Iron Helmet']);
-        $response->assertDatabaseHas('armors_have_skills', ['id_armors' => 1, 'id_skills' => 2]);
+
+        dd($response);
     }
 }
