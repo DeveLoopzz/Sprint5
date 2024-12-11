@@ -129,7 +129,34 @@ class ArmorsTest extends TestCase
                  ]);
     }
 
+    public function test_armor_delete() 
+    {
+        $armor = Armors::create([
+            'name' => 'Old Iron Chest',
+            'type' => 'Helmet'
+        ]);
+        $response = $this->delete("api/armors/delete/{$armor->id}");
+        $response->assertStatus(200)
+                 ->assertJson([
+                    'message' => 'Armor Deleted Successfully'
+                 ]);
+        $this->assertDatabaseMissing('armors', ['id' => $armor->id]);
+    }
 
+    public function test_armor_not_found_to_delete() 
+    {
+        $response = $this->delete("api/armors/delete/123412341");
+        $response->assertStatus(404);
+    }
+
+    public function test_read_armor()
+    {
+        $response = $this->get('api/armors');
+        $response->assertStatus(200);
+        $response->assertJsonStructure([
+            'message',
+            'data'
+        ]);
+    }
 
 }
-

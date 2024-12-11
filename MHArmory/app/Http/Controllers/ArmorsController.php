@@ -65,10 +65,26 @@ class ArmorsController extends Controller
         ], 200);
     }
 
-    public function deleteArmor() 
-    {}
-
+    public function deleteArmor($id) 
+    {
+        $armor = Armors::FindOrFail($id);
+        DB::transaction(function() use ($armor)
+        {
+            DB::table('armors_have_skills')->where('id_armors', $armor->id)->delete();
+            $armor->delete();
+        });
+        return response()->json([
+            'message' => 'Armor Deleted Successfully'
+        ]);
+    }
     public function readArmor() 
-    {}
+    {
+        $armors = Armors::get();
+
+        return response()->json([
+            'message' => 'Armor List',
+            'data' => $armors,
+        ]);
+    }
 
 }
