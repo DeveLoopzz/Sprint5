@@ -52,4 +52,17 @@ class SetsTest extends TestCase
             'id_armors' => $this->armors[0]->id
         ]);
     }
+
+    public function test_invalid_set()
+    {
+        $response = $this->post('api/sets/create', [
+            'name' => 'Rathalos Set',
+            'armors' => ''
+        ]);
+
+        $response->assertStatus(422)
+                 ->assertJson([
+                    'message' => 'Validation Failed'
+                 ]);
+    }
 }

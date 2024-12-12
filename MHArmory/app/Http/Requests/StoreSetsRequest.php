@@ -25,7 +25,7 @@ class StoreSetsRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255|unique:sets',
-            'armors' => 'required|array|max:5'
+            'armors' => 'required|array|min:1|max:5'
         ];
     }
 
