@@ -40,7 +40,7 @@ class SetsTest extends TestCase
     {
         $response = $this->post('api/sets/create', [
             'name' => 'Rathalos Set',
-            'armors' => $this->armors
+            'armors' => $this->armors->pluck('id')->toArray()
         ]);
 
         $response->assertStatus(200)

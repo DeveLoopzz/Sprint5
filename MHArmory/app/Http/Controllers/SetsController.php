@@ -16,14 +16,13 @@ class SetsController extends Controller
             $set = Sets::create([
                 'name' => $data['name'],
             ]);
-            foreach($data['armors'] as $armor){
+            foreach($data['armors'] as $armorId){
                 DB::table('sets_have_armors')->insert([
                     'id_sets' => $set->id,
-                    'id_armors' => $armor->id,
+                    'id_armors' => $armorId,
                 ]);
             }
         });
-
         return response()->json([
             'message' => 'Set Created Successfully'
         ], 200);
