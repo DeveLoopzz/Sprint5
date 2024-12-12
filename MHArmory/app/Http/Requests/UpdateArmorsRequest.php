@@ -24,11 +24,11 @@ class UpdateArmorsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:255|unique:armors' . $this->armor,
-            'type' => ['required', 'in:Helmet,Chest,Gloves,Faulds,Boots'],
-            'skills' => 'required|array|max:3',
-            'skills.*.level' => 'required|integer|min:1|max:3',
-            'skills.*.id' => 'required|exists:skills,id',
+            'name' => 'max:255|unique:armors' . $this->armor,
+            'type' => ['in:Helmet,Chest,Gloves,Faulds,Boots'],
+            'skills' => 'array|max:3',
+            'skills.*.level' => 'integer|min:1|max:3',
+            'skills.*.id' => 'exists:skills,id',
         ];
     }
 

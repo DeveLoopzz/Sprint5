@@ -50,7 +50,7 @@ class ArmorsTest extends TestCase
     {
         $response = $this->post('api/armors/create', [
             'name' => 'Iron Helmet',
-            'type' => 'Helmet',
+            'type' => 'Pies',
             'skills' => [
                 ['id' => $this->skills[0]->id, 'level' => 1 ],
                 ['id' => $this->skills[1]->id, 'level' => 2 ],
