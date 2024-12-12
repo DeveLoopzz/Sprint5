@@ -8,4 +8,7 @@ class SetsHaveArmors extends Model
 {
     protected $table = 'sets_have_armors';
     public $timestamps = false;
+
+
+
 }
