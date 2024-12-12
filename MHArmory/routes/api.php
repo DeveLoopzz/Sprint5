@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArmorsController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SetsController;
 use App\Http\Controllers\SkillsController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,10 @@ Route::put('armors/update/{id}', [ArmorsController::class, 'updateArmor']);
 Route::delete('armors/delete/{id}', [ArmorsController::class, 'deleteArmor']);
 Route::get('armors', [ArmorsController::class, 'readArmor']);
 
-
+//SETS ROUTES
+Route::post('sets/create', [SetsController::class, 'createSet']);
+Route::put('sets/update/{id}', [SetsController::class, 'updateSet']);
+Route::delete('sets/delete/{id}', [SetsController::class, 'deleteSet']);
+Route::get('sets', [SetsController::class, 'readSet']);
 
 
