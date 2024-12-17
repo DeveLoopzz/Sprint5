@@ -96,6 +96,9 @@ class SetsTest extends TestCase
         $response = $this->put("api/sets/update/{$set->id}", $updatedData);
 
         $response->assertStatus(200);
+        $response->assertJson([
+            'message' => 'Set Updated Successfully'
+        ]);
         
         $this->assertDatabaseHas('sets_have_armors', [
             'id_sets'   => $set->id,
@@ -123,5 +126,26 @@ class SetsTest extends TestCase
         $response = $this->put("api/sets/update/{$set->id}", $updatedData);
 
         $response->assertStatus(422);
+    }
+
+
+    public function test_delete_set() 
+    {
+        $set = $this->set;
+        $response = $this->delete("api/sets/delete/{$set->id}");
+
+        $response->assertStatus(200);
+        $this->assertDatabaseMissing('sets', ['id' => $set->id]);
+        $this->assertDatabaseMissing('sets_have_armors', ['id_sets' => $set->id]);
+        $response->assertJson([
+            'message' => 'Set Deleted Successfully'
+        ]);
+    }
+
+    public function test_Delete_set_not_found()
+    {
+        $set = 20000;
+        $response = $this->delete("api/sets/delete/{$set}");
+        $response->assertStatus(404);
     }
 }

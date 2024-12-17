@@ -48,9 +48,25 @@ class SetsController extends Controller
                 ]);
             }
         });
+
+        return response()->json([
+            'message' => 'Set Updated Successfully',
+        ],200);
     }
 
-    public function deleteSet(){}
+    public function deleteSet($id)
+    {
+        $set = Sets::FindOrFail($id);
+
+        DB::transaction(function() use($set) {
+            DB::table('sets_have_armors')->where('id_sets', $set->id)->delete();
+            $set->delete();
+        });
+
+        return response()->json([
+            'message' => 'Set Deleted Successfully',
+        ],200);
+    }
 
     public function readSet(){}
 }
