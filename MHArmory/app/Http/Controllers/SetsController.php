@@ -38,16 +38,10 @@ class SetsController extends Controller
             if(isset($data['name'])) {
                 $set->update(['name' => $data['name']]);
             }
-
-            $currentArmors = DB::table('sets_have_armors')->where('id_sets', $set->id)->pluck('id_armors')->toArray();
             $newArmors = $data['armors'];
+            DB::table('sets_have_armors')->where('id_sets', $set->id)->delete();
 
-            $armorsToDelete = array_diff($currentArmors, $newArmors);
-            $armorsToUpdate = array_diff($newArmors, $currentArmors);
-
-            DB::table('sets_have_armors')->where('id_sets', $set->id)->whereIn('id_armors', $armorsToDelete)->delete();
-
-            foreach ($armorsToUpdate as $armorId) {
+            foreach ($newArmors as $armorId) {
                 DB::table('sets_have_armors')->insert([
                     'id_sets' => $set->id,
                     'id_armors' => $armorId

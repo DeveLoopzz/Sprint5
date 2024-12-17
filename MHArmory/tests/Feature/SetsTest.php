@@ -107,4 +107,21 @@ class SetsTest extends TestCase
             DB::table('sets_have_armors')->where('id_sets', $set->id)->count()
         );
     }
+
+    public function test_update_few_armors()
+    {
+        $set = $this->set;
+        $updatedData = [
+            'name' => 'Fatalis Set',
+            'armors' => [$this->armors[3]->id,
+            $this->armors[4]->id,
+            $this->armors[0]->id,
+            $this->armors[1]->id,
+            ]
+        ];
+
+        $response = $this->put("api/sets/update/{$set->id}", $updatedData);
+
+        $response->assertStatus(422);
+    }
 }
