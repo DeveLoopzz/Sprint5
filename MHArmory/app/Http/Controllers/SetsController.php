@@ -8,6 +8,8 @@ use App\Models\Sets;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function PHPUnit\Framework\isEmpty;
+
 class SetsController extends Controller
 {
     public function createSet(StoreSetsRequest $request)
@@ -68,5 +70,25 @@ class SetsController extends Controller
         ],200);
     }
 
-    public function readSet(){}
+    public function readSet()
+    {
+        $sets = Sets::get();
+        if(isEmpty($sets)){
+            return response()->json([
+                'message' => 'List Empty'
+            ],404);
+        }
+        $setsWithArmors = $sets->map(function($set){
+            $armors = DB::table('sets_have_armors')->where('id_sets', $set->id)
+                                                   ->join('armors', 'sets_have_armors.id_armors', '=', 'armors.id')
+                                                   ->select('armors.*')
+                                                   ->get();
+            $set->armors = $armors;
+            return $set;
+        });
+        return response()->json([
+            'data' => $setsWithArmors,
+            'message' => 'Set List'
+        ], 200); 
+    }
 }

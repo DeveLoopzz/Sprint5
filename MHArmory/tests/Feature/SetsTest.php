@@ -148,4 +148,23 @@ class SetsTest extends TestCase
         $response = $this->delete("api/sets/delete/{$set}");
         $response->assertStatus(404);
     }
+
+    public function test_read_set() 
+    {
+        $response = $this->get("api/sets");
+        $response->assertStatus(200);
+        $response->assertJson([
+            'message' => 'Set List'
+        ]);
+        $response->assertJsonStructure([
+            'data' => [
+                '*' => [
+                    'id',
+                    'name',
+                    'armors'
+                ]
+            ]
+        ]);
+    }
+
 }
