@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Skills;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
@@ -11,6 +12,8 @@ class SkillsTest extends TestCase
 {
     use DatabaseTransactions;
     protected $skill;
+    protected $user;
+    protected $adminUser;
 
     public function setup(): void
     {
@@ -28,6 +31,9 @@ class SkillsTest extends TestCase
             'effect' => json_encode(["1" => "defense + 5",
              "2" =>"defense +10"])
         ]);
+
+        $this->user = User::factory()->asHunter()->create();
+        $this->adminUser = User::factory()->asAdmin()->create();
     }
 
     public function test_skills_create()

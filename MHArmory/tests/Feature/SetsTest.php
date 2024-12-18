@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Armors;
 use App\Models\Sets;
 use App\Models\Skills;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,8 @@ class SetsTest extends TestCase
     protected $armors;
     protected $skills;
     protected $set;
+    protected $user;
+    protected $adminUser;
 
     function setup():void 
     {
@@ -28,7 +31,8 @@ class SetsTest extends TestCase
             '--no-interaction' => true,
             '--personal' => true,
         ]);
-
+        $this->user = User::factory()->asHunter()->create();
+        $this->adminUser = User::factory()->asAdmin()->create();
 
         $this->armors = Armors::factory()->count(5)->create();
         $this->skills = Skills::factory()->count(5)->create();

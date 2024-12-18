@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Armors;
 use App\Models\Skills;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +15,8 @@ class ArmorsTest extends TestCase
     use DatabaseTransactions;
     protected $skills;
     protected $armor;
+    protected $user;
+    protected $adminUser;
     public function setup(): void
     {
         parent::setup();
@@ -25,12 +28,14 @@ class ArmorsTest extends TestCase
             '--no-interaction' => true,
             '--personal' => true,
         ]);
-
+        $this->user = User::factory()->asHunter()->create();
+        $this->adminUser = User::factory()->asAdmin()->create();
         $this->skills = Skills::factory()->count(3)->create();
     }
 
     public function test_create_armor()
     {
+        $this->actingAs($this->adminUser);
         $response = $this->post('api/armors/create', [
             'name' => 'Ironic Helmet',
             'type' => 'Helmet',

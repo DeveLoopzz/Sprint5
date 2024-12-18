@@ -26,11 +26,15 @@ class AuthTest extends TestCase
             '--no-interaction' => true,
             '--personal' => true,
         ]);
-        $this->user = User::create([
-            'name' => 'test',
-            'email' => 'test@test.com',
-            'password' => Hash::make('password')
-        ]);
+        $this->user = User::factory()->asHunter()->create();
+        $this->adminUser = User::factory()->asAdmin()->create();
+    }
+
+    public function test_users_roles()
+    {
+        $this->assertTrue($this->adminUser->hasRole('admin'));
+        $this->assertTrue($this->user->hasRole('hunter'));
+
     }
 
 
@@ -45,6 +49,10 @@ class AuthTest extends TestCase
         $this->assertDatabaseHas('users' , [
             'email' => 'email@test.com'
         ]);
+
+        $user = User::where('email', 'email@test.com')->first();
+        $this->assertTrue($user->hasRole('hunter'));
+
     }
 
     public function test_user_invalid_register() 
