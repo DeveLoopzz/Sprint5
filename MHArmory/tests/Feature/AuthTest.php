@@ -17,9 +17,10 @@ class AuthTest extends TestCase
 
     public function setup() : void 
     {
-        parent::setUp();
+        parent::setup();
         Artisan::call('migrate');
         Artisan::call('db:seed');
+        Artisan::call('passport:keys');
         Artisan::call('passport:client', [
             '--name' => 'ClientTest',
             '--no-interaction' => true,

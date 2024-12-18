@@ -18,6 +18,7 @@ class ArmorsTest extends TestCase
     {
         parent::setup();
         Artisan::call('migrate');
+        Artisan::call('passport:keys');
         Artisan::call('db:seed');
         Artisan::call('passport:client', [
             '--name' => 'ClientTest',

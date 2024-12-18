@@ -6,8 +6,6 @@ use App\Models\Armors;
 use App\Models\Sets;
 use App\Models\Skills;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
@@ -24,11 +22,13 @@ class SetsTest extends TestCase
         parent::setup();
         Artisan::call('migrate');
         Artisan::call('db:seed');
+        Artisan::call('passport:keys');
         Artisan::call('passport:client', [
             '--name' => 'ClientTest',
             '--no-interaction' => true,
             '--personal' => true,
         ]);
+
 
         $this->armors = Armors::factory()->count(5)->create();
         $this->skills = Skills::factory()->count(5)->create();

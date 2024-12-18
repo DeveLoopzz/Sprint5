@@ -17,6 +17,7 @@ class SkillsTest extends TestCase
         parent::setup();
         Artisan::call('migrate');
         Artisan::call('db:seed');
+        Artisan::call('passport:keys');
         Artisan::call('passport:client', [
             '--name' => 'ClientTest',
             '--no-interaction' => true,
@@ -32,7 +33,7 @@ class SkillsTest extends TestCase
     public function test_skills_create()
     {
         $response = $this->post('api/skills/create', [
-            'name' => "attack bonuses plus",
+            'name' => "attack bonuses",
             'effect' => json_encode(["1" => "attack +2",
              "2" =>"attack +10"])
         ]);

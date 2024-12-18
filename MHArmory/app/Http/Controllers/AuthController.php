@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\Passport;
+use Spatie\Permission\Models\Role;
+
 class AuthController extends Controller
 {
     public function register(Request $request)
@@ -24,7 +26,13 @@ class AuthController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        return response()->json($user);
+        $role = Role::where('name', 'hunter')->first();
+        $user->assignRole($role);
+
+        return response()->json([
+            'message' => 'User Registered Successfully',
+            'user' => $user
+            ]);
     }
 
     public function login(Request $request)
