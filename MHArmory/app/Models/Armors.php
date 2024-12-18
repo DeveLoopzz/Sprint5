@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Skills;
 use App\Models\Sets;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Armors extends Model
 {
+    use HasFactory;
     protected $table = 'armors';
     public $timestamps = false;
 
@@ -21,12 +23,12 @@ class Armors extends Model
 
     public function sets() 
     {
-        return $this->belongsToMany(Sets::class, 'sets_have_armors');
+        return $this->belongsToMany(Sets::class, 'sets_have_armors', 'id_armors', 'id_sets');
     }
 
     public function skills() 
     {
-        return $this->belongsToMany(Skills::class, 'armors_have_skills')->withPivot('level');
+        return $this->belongsToMany(Skills::class, 'armors_have_skills', 'id_armors', 'id_skills')->withPivot('level');
     }
 
     public function getType()
