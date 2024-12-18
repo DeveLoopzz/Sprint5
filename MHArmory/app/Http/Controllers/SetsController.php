@@ -72,22 +72,9 @@ class SetsController extends Controller
 
     public function readSet()
     {
-        $sets = Sets::get();
-        if(isEmpty($sets)){
-            return response()->json([
-                'message' => 'List Empty'
-            ],404);
-        }
-        $setsWithArmors = $sets->map(function($set){
-            $armors = DB::table('sets_have_armors')->where('id_sets', $set->id)
-                                                   ->join('armors', 'sets_have_armors.id_armors', '=', 'armors.id')
-                                                   ->select('armors.*')
-                                                   ->get();
-            $set->armors = $armors;
-            return $set;
-        });
+        $sets = Sets::with('armors')->get();
         return response()->json([
-            'data' => $setsWithArmors,
+            'data' => $sets,
             'message' => 'Set List'
         ], 200); 
     }

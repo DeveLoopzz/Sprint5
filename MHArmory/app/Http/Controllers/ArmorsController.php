@@ -77,18 +77,18 @@ class ArmorsController extends Controller
     }
     public function readArmor() 
     {
-        $armors = Armors::get();
-            $armorsWithSkills = $armors->map(function($armor){
-                $skills = DB::table('armors_have_skills')->where('id_armors', $armor->id)
-                                                         ->join('skills', 'armors_have_skills.id_skills', '=', 'skills.id')
-                                                         ->select('skills.*','armors_have_skills.level')
-                                                         ->get();
-                $armor->skills = $skills;
-                return $armor;
-            });
+        $armors = Armors::with('skills')->get();
+            // $armorsWithSkills = $armors->map(function($armor){
+            //     $skills = DB::table('armors_have_skills')->where('id_armors', $armor->id)
+            //                                              ->join('skills', 'armors_have_skills.id_skills', '=', 'skills.id')
+            //                                              ->select('skills.*','armors_have_skills.level')
+            //                                              ->get();
+            //     $armor->skills = $skills;
+            //     return $armor;
+            // });
         return response()->json([
             'message' => 'Armor List',
-            'data' => $armorsWithSkills,
+            'data' => $armors,
         ]);
     }
 

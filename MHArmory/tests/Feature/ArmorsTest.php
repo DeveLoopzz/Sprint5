@@ -156,7 +156,14 @@ class ArmorsTest extends TestCase
         $response->assertStatus(200);
         $response->assertJsonStructure([
             'message',
-            'data'
+            'data' => [
+                '*' => [
+                    'id',
+                    'name',
+                    'type',
+                    'skills'
+                ]
+            ]
         ]);
     }
 }

@@ -151,7 +151,7 @@ class SetsTest extends TestCase
 
     public function test_read_set() 
     {
-        $response = $this->get("api/sets");
+        $response = $this->get('api/sets');
         $response->assertStatus(200);
         $response->assertJson([
             'message' => 'Set List'
