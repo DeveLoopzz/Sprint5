@@ -23,17 +23,15 @@ Route::group(['middleware' => ['role:admin']], function(){
     Route::delete('armors/delete/{id}', [ArmorsController::class, 'deleteArmor']);
 });
 
-Route::group(['middleware' => ['role:admin']], function(){
-    //READ ARMORS AND SKILLS FOR USERS
+
+Route::group(['middleware' => ['role:admin|hunter']], function () {
+    Route::get('sets', [SetsController::class, 'readSet']);
     Route::get('armors', [ArmorsController::class, 'readArmor']);
     Route::get('skills', [SkillsController::class, 'readSkills']);
-    //SETS ROUTES
     Route::post('sets/create', [SetsController::class, 'createSet']);
     Route::put('sets/update/{id}', [SetsController::class, 'updateSet']);
     Route::delete('sets/delete/{id}', [SetsController::class, 'deleteSet']);
-    Route::get('sets', [SetsController::class, 'readSet']);
 });
-
 
 
 

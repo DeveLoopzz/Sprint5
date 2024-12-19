@@ -6,31 +6,16 @@ use App\Models\Armors;
 use App\Models\Skills;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class ArmorsTest extends TestCase
 {
     use DatabaseTransactions;
-    protected $skills;
-    protected $armor;
-    protected $user;
-    protected $adminUser;
+
+
     public function setup(): void
     {
         parent::setup();
-        Artisan::call('migrate');
-        Artisan::call('passport:keys');
-        Artisan::call('db:seed');
-        Artisan::call('passport:client', [
-            '--name' => 'ClientTest',
-            '--no-interaction' => true,
-            '--personal' => true,
-        ]);
-        $this->user = User::factory()->asHunter()->create();
-        $this->adminUser = User::factory()->asAdmin()->create();
-        $this->skills = Skills::factory()->count(3)->create();
     }
 
     public function test_create_armor()
@@ -54,6 +39,7 @@ class ArmorsTest extends TestCase
 
     public function test_invalid_armor_create()
     {
+        $this->actingAs($this->adminUser);
         $response = $this->post('api/armors/create', [
             'name' => 'Iron Helmet',
             'type' => 'Pies',
@@ -72,6 +58,7 @@ class ArmorsTest extends TestCase
 
     public function test_update_armor() 
     {
+        $this->actingAs($this->adminUser);
         $armor = Armors::create([
             'name' => 'Old Iron Chest',
             'type' => 'Chest'
@@ -99,6 +86,7 @@ class ArmorsTest extends TestCase
 
     public function test_update_not_found_armor() 
     {
+        $this->actingAs($this->adminUser);
         $response = $this->put('api/armors/update/19099', [
             'name' => 'New Iron Armor',
             'type' => 'Helmet',
@@ -113,6 +101,7 @@ class ArmorsTest extends TestCase
 
     public function test_update_invalid_data() 
     {
+        $this->actingAs($this->adminUser);
         $armor = Armors::create([
             'name' => 'Old Iron Chest',
             'type' => 'Helmet'
@@ -138,6 +127,7 @@ class ArmorsTest extends TestCase
 
     public function test_armor_delete() 
     {
+        $this->actingAs($this->adminUser);
         $armor = Armors::create([
             'name' => 'Old Iron Chest',
             'type' => 'Helmet'
@@ -152,12 +142,14 @@ class ArmorsTest extends TestCase
 
     public function test_armor_not_found_to_delete() 
     {
+        $this->actingAs($this->adminUser);
         $response = $this->delete("api/armors/delete/123412341");
         $response->assertStatus(404);
     }
 
     public function test_read_armor()
     {
+        $this->actingAs($this->user);
         $response = $this->get('api/armors');
         $response->assertStatus(200);
         $response->assertJsonStructure([

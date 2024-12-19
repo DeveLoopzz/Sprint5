@@ -35,15 +35,15 @@ class UserFactory extends Factory
     public function asAdmin()
     {
         return $this->afterCreating(function (User $user) {
-            $role = Role::firstOrCreate(['name' => 'admin']);
+            $role = Role::findByName('admin');
             $user->assignRole($role);
         });
     }
 
-    public function asHunter()
+        public function asHunter()
     {
         return $this->afterCreating(function (User $user) {
-            $role = Role::firstOrCreate(['name' => 'hunter']);
+            $role = Role::findByName('hunter');
             $user->assignRole($role);
         });
     }

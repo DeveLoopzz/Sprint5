@@ -12,22 +12,10 @@ use Tests\TestCase;
 class AuthTest extends TestCase
 {
     use DatabaseTransactions;
-    protected $user;
-    protected $adminUser;
 
     public function setup() : void 
     {
         parent::setup();
-        Artisan::call('migrate');
-        Artisan::call('db:seed');
-        Artisan::call('passport:keys');
-        Artisan::call('passport:client', [
-            '--name' => 'ClientTest',
-            '--no-interaction' => true,
-            '--personal' => true,
-        ]);
-        $this->user = User::factory()->asHunter()->create();
-        $this->adminUser = User::factory()->asAdmin()->create();
     }
 
     public function test_users_roles()

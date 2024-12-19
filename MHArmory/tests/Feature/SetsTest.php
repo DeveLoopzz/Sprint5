@@ -14,50 +14,16 @@ use Tests\TestCase;
 class SetsTest extends TestCase
 {
     use DatabaseTransactions;
-    protected $armors;
-    protected $skills;
-    protected $set;
-    protected $user;
-    protected $adminUser;
 
     function setup():void 
     {
         parent::setup();
-        Artisan::call('migrate');
-        Artisan::call('db:seed');
-        Artisan::call('passport:keys');
-        Artisan::call('passport:client', [
-            '--name' => 'ClientTest',
-            '--no-interaction' => true,
-            '--personal' => true,
-        ]);
-        $this->user = User::factory()->asHunter()->create();
-        $this->adminUser = User::factory()->asAdmin()->create();
-
-        $this->armors = Armors::factory()->count(5)->create();
-        $this->skills = Skills::factory()->count(5)->create();
-
-        foreach($this->armors as $armor) {
-            $armor->skills()->attach($this->skills[0]->id, ['level' => 1]);
-        }
-        $armorsWithSkills = $this->armors->pluck('id')->toArray();
-
-        DB::transaction(function() use($armorsWithSkills){
-            $this->set = Sets::create([
-                'name' => 'Alatreon Set'
-            ]);
-            foreach($armorsWithSkills as $armors){
-                DB::table('sets_have_armors')->insert([
-                    'id_sets' => $this->set->id,
-                    'id_armors' => $armors,
-                ]);
-            }
-        });
-
     }
 
     public function test_create_set()
     {
+        $this->actingAs($this->user);
+
         $response = $this->post('api/sets/create', [
             'name' => 'Rathalos Set',
             'armors' => $this->armors->pluck('id')->toArray()
@@ -75,6 +41,7 @@ class SetsTest extends TestCase
 
     public function test_invalid_set()
     {
+        $this->actingAs($this->user);
         $response = $this->post('api/sets/create', [
             'name' => 'Rathalos Set',
             'armors' => ''
@@ -88,6 +55,7 @@ class SetsTest extends TestCase
 
     public function test_update_set() 
     {
+        $this->actingAs($this->user);
         $set = $this->set;
         $updatedData = [
             'name' => 'Fatalis Set',
@@ -117,6 +85,7 @@ class SetsTest extends TestCase
 
     public function test_update_few_armors()
     {
+        $this->actingAs($this->user);
         $set = $this->set;
         $updatedData = [
             'name' => 'Fatalis Set',
@@ -135,6 +104,7 @@ class SetsTest extends TestCase
 
     public function test_delete_set() 
     {
+        $this->actingAs($this->user);
         $set = $this->set;
         $response = $this->delete("api/sets/delete/{$set->id}");
 
@@ -148,6 +118,7 @@ class SetsTest extends TestCase
 
     public function test_Delete_set_not_found()
     {
+        $this->actingAs($this->user);
         $set = 20000;
         $response = $this->delete("api/sets/delete/{$set}");
         $response->assertStatus(404);
@@ -155,6 +126,7 @@ class SetsTest extends TestCase
 
     public function test_read_set() 
     {
+        $this->actingAs($this->user);
         $response = $this->get('api/sets');
         $response->assertStatus(200);
         $response->assertJson([

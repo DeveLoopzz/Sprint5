@@ -7,14 +7,11 @@ use App\Http\Requests\UpdateArmorsRequest;
 use App\Models\Armors;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Traits\HasRoles;
 
 class ArmorsController extends Controller
 {
     public function createArmor(StoreArmorsRequest $request) 
-    {   
-        $user = Auth::user();
-        dd($user, $user->roles);
+    {     
         $data = $request->validated();
         DB::transaction(function () use ($data){
             $armor = Armors::create([
@@ -39,6 +36,7 @@ class ArmorsController extends Controller
         $data = $request->validated();
         $armor = Armors::FindOrFail($id);
 
+        $user = Auth::user();
         DB::transaction(function() use ($data, $armor) 
         {
             $updateData = [];

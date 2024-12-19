@@ -11,33 +11,16 @@ use Tests\TestCase;
 class SkillsTest extends TestCase
 {
     use DatabaseTransactions;
-    protected $skill;
-    protected $user;
-    protected $adminUser;
 
     public function setup(): void
     {
         parent::setup();
-        Artisan::call('migrate');
-        Artisan::call('db:seed');
-        Artisan::call('passport:keys');
-        Artisan::call('passport:client', [
-            '--name' => 'ClientTest',
-            '--no-interaction' => true,
-            '--personal' => true,
-        ]);
-        $this->skill = Skills::create([
-            'name' => 'defense bonus',
-            'effect' => json_encode(["1" => "defense + 5",
-             "2" =>"defense +10"])
-        ]);
 
-        $this->user = User::factory()->asHunter()->create();
-        $this->adminUser = User::factory()->asAdmin()->create();
     }
 
     public function test_skills_create()
     {
+        $this->actingAs($this->adminUser);
         $response = $this->post('api/skills/create', [
             'name' => "attack bonuses",
             'effect' => json_encode(["1" => "attack +2",
@@ -56,6 +39,7 @@ class SkillsTest extends TestCase
 
     public function test_skills_create_invalid_json() 
     {
+        $this->actingAs($this->adminUser);
         $response = $this->post('api/skills/create', [
             'name' => 'attack bonus',
             'effect' => 'attack +5'
@@ -69,6 +53,7 @@ class SkillsTest extends TestCase
 
     public function test_skills_create_repeated_value()
     {
+        $this->actingAs($this->adminUser);
         $response = $this->post('api/skills/create', [
             'name' => 'defense bonus',
             'effect' => '{"1" => "defense + 5",
@@ -83,7 +68,8 @@ class SkillsTest extends TestCase
 
     public function test_skills_update() 
     {
-        $skill = $this->skill;
+        $this->actingAs($this->adminUser);
+        $skill = $this->skills;
         $response = $this->putJson("api/skills/update/{$skill->id}", [
             'name' => 'new defense bonus'
         ]);
@@ -99,7 +85,8 @@ class SkillsTest extends TestCase
 
     public function test_skills_update_invalid_data() 
     {
-        $skill = $this->skill;
+        $this->actingAs($this->adminUser);
+        $skill = $this->skills;
         $response = $this->putJson("api/skills/update/{$skill->id}", [
             'name' => 1,
             'effect' => ''
@@ -113,7 +100,8 @@ class SkillsTest extends TestCase
 
     public function test_skill_can_be_deleted()
     {
-        $skill = $this->skill;
+        $this->actingAs($this->adminUser);
+        $skill = $this->skills;
         $response = $this->delete("api/skills/delete/{$skill->id}");
         $response->assertStatus(200);
         $this->assertDatabaseMissing('skills', [
@@ -123,6 +111,7 @@ class SkillsTest extends TestCase
 
     public function test_skill_cant_be_deleted()
     {
+        $this->actingAs($this->adminUser);
         $response = $this->delete("api/skills/delete/12324569");
         $response->assertStatus(404)
                  ->assertJson([
