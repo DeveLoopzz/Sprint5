@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSkillRequest;
 use App\Http\Requests\UpdateSkillRequest;
 use App\Models\Skills;
+use Illuminate\Support\Facades\Auth;
 
 class SkillsController extends Controller
 {
@@ -53,8 +54,8 @@ class SkillsController extends Controller
 
     public function readSkills()
     {
-        $skills = Skills::get();
-
+        $skills = Skills::all();
+        
         if(!$skills){
             return response()->json([
                 'message' => 'Not Found'

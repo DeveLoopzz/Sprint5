@@ -6,11 +6,12 @@ use App\Http\Requests\StoreArmorsRequest;
 use App\Http\Requests\UpdateArmorsRequest;
 use App\Models\Armors;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ArmorsController extends Controller
 {
     public function createArmor(StoreArmorsRequest $request) 
-    {   
+    {     
         $data = $request->validated();
         DB::transaction(function () use ($data){
             $armor = Armors::create([
@@ -78,14 +79,6 @@ class ArmorsController extends Controller
     public function readArmor() 
     {
         $armors = Armors::with('skills')->get();
-            // $armorsWithSkills = $armors->map(function($armor){
-            //     $skills = DB::table('armors_have_skills')->where('id_armors', $armor->id)
-            //                                              ->join('skills', 'armors_have_skills.id_skills', '=', 'skills.id')
-            //                                              ->select('skills.*','armors_have_skills.level')
-            //                                              ->get();
-            //     $armor->skills = $skills;
-            //     return $armor;
-            // });
         return response()->json([
             'message' => 'Armor List',
             'data' => $armors,

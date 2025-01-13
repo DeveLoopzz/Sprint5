@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSetsRequest;
 use App\Http\Requests\UpdateSetsRequest;
 use App\Models\Sets;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use function PHPUnit\Framework\isEmpty;
 
 class SetsController extends Controller
 {
