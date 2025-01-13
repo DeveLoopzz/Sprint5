@@ -12,8 +12,6 @@ Route::middleware('auth:api')->group(function() {
     Route::post('users/logout', [AuthController::class, 'logout']);
 });
 
-Route::group(['middleware' => ['role:admin']], function(){
-    //SKILLS ROUTES ADMIN
     Route::post('skills/create', [SkillsController::class, 'createSkill']);
     Route::put('skills/update/{id}', [SkillsController::class, 'updateSkill']);
     Route::delete('skills/delete/{id}', [SkillsController::class, 'deleteSkill']);
@@ -21,17 +19,14 @@ Route::group(['middleware' => ['role:admin']], function(){
     Route::post('armors/create', [ArmorsController::class, 'createArmor']);
     Route::put('armors/update/{id}', [ArmorsController::class, 'updateArmor']);
     Route::delete('armors/delete/{id}', [ArmorsController::class, 'deleteArmor']);
-});
 
 
-Route::group(['middleware' => ['role:admin|hunter']], function () {
     Route::get('sets', [SetsController::class, 'readSet']);
     Route::get('armors', [ArmorsController::class, 'readArmor']);
     Route::get('skills', [SkillsController::class, 'readSkills']);
+
     Route::post('sets/create', [SetsController::class, 'createSet']);
     Route::put('sets/update/{id}', [SetsController::class, 'updateSet']);
     Route::delete('sets/delete/{id}', [SetsController::class, 'deleteSet']);
-});
-
 
 

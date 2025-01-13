@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Armors;
+use App\Models\Skills;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -10,10 +11,12 @@ class ArmorsTest extends TestCase
 {
     use DatabaseTransactions;
 
+    protected $skills;
 
     public function setup(): void
     {
         parent::setup();
+        $this->skills = Skills::factory()->count(5)->create();
     }
 
     public function test_create_armor()

@@ -54,7 +54,7 @@ class SkillsController extends Controller
 
     public function readSkills()
     {
-        $skills = Skills::get();
+        $skills = Skills::all();
         
         if(!$skills){
             return response()->json([

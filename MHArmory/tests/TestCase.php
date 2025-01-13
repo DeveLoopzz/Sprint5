@@ -24,6 +24,9 @@ abstract class TestCase extends BaseTestCase
     public function setUp(): void
     {
         parent::setup();
+
+        $this->app->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
+        
         Artisan::call('migrate:fresh');
         Artisan::call('db:seed');
         Artisan::call('passport:keys');

@@ -22,8 +22,6 @@ class SetsTest extends TestCase
 
     public function test_create_set()
     {
-        $this->actingAs($this->user);
-
         $response = $this->post('api/sets/create', [
             'name' => 'Rathalos Set',
             'armors' => $this->armors->pluck('id')->toArray()

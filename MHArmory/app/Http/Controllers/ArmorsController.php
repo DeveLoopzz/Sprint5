@@ -36,7 +36,6 @@ class ArmorsController extends Controller
         $data = $request->validated();
         $armor = Armors::FindOrFail($id);
 
-        $user = Auth::user();
         DB::transaction(function() use ($data, $armor) 
         {
             $updateData = [];
