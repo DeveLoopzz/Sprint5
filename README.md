@@ -34,7 +34,13 @@ Asegúrate de tener instalados:
    ```bash
    php artisan passport:client --personal
    ```
-6.Usuarios para postman:
+6. Ejecutar el seeder:
+
+   ```bash
+   php artisan db:seed
+   ```
+
+7. Usuarios para postman:
 
    Admin:
    
