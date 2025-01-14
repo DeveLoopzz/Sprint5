@@ -19,12 +19,13 @@ Asegúrate de tener instalados:
    cd tu-proyecto
    ```
    
-2.Instalar dependencias:
+2. Instalar dependencias:
 
    ```bash
    composer install
    ```
-3. Copiar el archivo .env.example
+3. Copiar el archivo .env.example.
+
 4. Instalar laravel passport:
    ```bash
    php artisan passport:install
