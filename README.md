@@ -35,9 +35,13 @@ Asegúrate de tener instalados:
    php artisan passport:client --personal
    ```
 6.Usuarios para postman:
+
    Admin:
+   
       email : test@example.com
       password : 12345678
+      
    Hunter:
+   
       email : test@hunter.com
       password : 12345678
