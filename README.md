@@ -17,10 +17,11 @@ Asegúrate de tener instalados:
    ```bash
    git clone https://github.com/tuusuario/tu-proyecto.git
    cd tu-proyecto
+   
 2.Instalar dependencias:
 
    composer install
-
+   
 3. Copiar el archivo .env.example
 
 4. Instalar laravel passport:
