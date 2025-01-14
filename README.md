@@ -1,13 +1,4 @@
-# Proyecto Armaduras y Habilidades
-
-Este proyecto es una API para la gestión de armaduras, habilidades y sets de cazadores. Utiliza **Laravel**, **Passport** para autenticación, y **Spatie Permissions** para la gestión de roles y permisos.
-
-## 🌟 Características
-
-- Gestión de usuarios con roles (`admin`, `hunter`).
-- CRUD para armaduras, habilidades y sets.
-- Autenticación basada en tokens con Passport.
-- Sistema de roles y permisos con Spatie.
+# API MHArmory
 
 ## 📋 Requisitos Previos
 
@@ -26,3 +17,25 @@ Asegúrate de tener instalados:
    ```bash
    git clone https://github.com/tuusuario/tu-proyecto.git
    cd tu-proyecto
+2.Instalar dependencias:
+
+   composer install
+
+3. Copiar el archivo .env.example
+
+4. Instalar laravel passport:
+
+   php artisan passport:install
+
+5.Generar las claves de passport
+
+   php artisan passport:client --personal
+
+6.Usuarios para postman:
+
+   Admin:
+      email : test@example.com
+      password : 12345678
+   Hunter:
+      email : test@hunter.com
+      password : 12345678
