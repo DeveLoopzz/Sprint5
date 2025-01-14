@@ -42,7 +42,6 @@ class ArmorsTest extends TestCase
     public function test_invalid_armor_create()
     {
         Passport::actingAs($this->adminUser);
-        $this->actingAs($this->adminUser);
         $response = $this->post('api/armors/create', [
             'name' => 'Iron Helmet',
             'type' => 'Pies',
@@ -62,7 +61,6 @@ class ArmorsTest extends TestCase
     public function test_update_armor() 
     {
         Passport::actingAs($this->adminUser);
-        $this->actingAs($this->adminUser);
         $armor = Armors::create([
             'name' => 'Old Iron Chest',
             'type' => 'Chest'

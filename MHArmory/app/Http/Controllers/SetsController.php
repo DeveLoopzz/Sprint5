@@ -28,7 +28,6 @@ class SetsController extends Controller
             'message' => 'Set Created Successfully'
         ], 200);
     }
-
     public function updateSet(UpdateSetsRequest $request, $id)
     {
         $data = $request->validated();
@@ -48,12 +47,10 @@ class SetsController extends Controller
                 ]);
             }
         });
-
         return response()->json([
             'message' => 'Set Updated Successfully',
         ],200);
     }
-
     public function deleteSet($id)
     {
         $set = Sets::FindOrFail($id);
@@ -67,7 +64,6 @@ class SetsController extends Controller
             'message' => 'Set Deleted Successfully',
         ],200);
     }
-
     public function readSet()
     {
         $sets = Sets::with('armors')->get();

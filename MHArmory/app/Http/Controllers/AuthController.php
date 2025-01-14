@@ -19,16 +19,13 @@ class AuthController extends Controller
             'email' =>'required|unique:users|max:255|',
             'password' => 'required|min:6'
         ]);
-
         $user = User::create([
             'name' => $request->name  ?? 'anónimo',
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
-
         $role = Role::where('name', 'hunter')->first();
         $user->assignRole($role);
-
         return response()->json([
             'message' => 'User Registered Successfully',
             'user' => $user
@@ -42,7 +39,6 @@ class AuthController extends Controller
             'password' => 'required|min:6'
         ]);
         $foundUser = User::where('email', $request->email)->first();
-
         if(isset($foundUser)) {
             if(Hash::check($request->password, $foundUser->password)){ 
                 $token = $foundUser->createToken('auth_token')->accessToken;
@@ -58,7 +54,6 @@ class AuthController extends Controller
             ],401);
         }
     }
-
     public function logout(Request $request)
     {
         if(!$request->user()){
@@ -70,6 +65,5 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Logged out Successfully'
         ], 200);
-
     }
 }

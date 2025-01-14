@@ -42,26 +42,11 @@ abstract class TestCase extends BaseTestCase
         $this->armors = Armors::factory()->count(5)->create();
         $this->skills = Skills::factory()->count(5)->create();
 
-        $loginUser = $this->postJson('api/users/login', [
-            'email' => 'test@hunter.com',
-            'password' => '12345678'
-        ]);
-
-        $loginAdminUser = $this->postJson('api/users/login', [
-            'email' => 'test@example.com',
-            'password' => '12345678'
-        ]);
-
-        $this->token = $loginUser['token'];
-        $this->adminToken = $loginAdminUser['token'];
-
         
         foreach($this->armors as $armor) {
             $armor->skills()->attach($this->skills[0]->id, ['level' => 1]);
         }
         $armorsWithSkills = $this->armors->pluck('id')->toArray();
-
-
 
         DB::transaction(function() use($armorsWithSkills){
             $this->set = Sets::create([

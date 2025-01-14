@@ -22,7 +22,6 @@ class SkillsController extends Controller
             'message' => 'Skill created successfully'
         ], 200);
     }
-
     public function updateSkill(UpdateSkillRequest $request, $id)
     {
         $skill = Skills::FindOrFail($id);
@@ -36,7 +35,6 @@ class SkillsController extends Controller
             'message' => 'Skill updated successfully'
         ],200);
     }
-
     public function deleteSkill($id)
     {
         $skill = Skills::Find($id);
@@ -51,7 +49,6 @@ class SkillsController extends Controller
             'message' => 'Skill deleted successfully'
         ], 200);
     }
-
     public function readSkills()
     {
         $skills = Skills::all();

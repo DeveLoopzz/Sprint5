@@ -6,7 +6,6 @@ use App\Http\Requests\StoreArmorsRequest;
 use App\Http\Requests\UpdateArmorsRequest;
 use App\Models\Armors;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 class ArmorsController extends Controller
 {
@@ -63,7 +62,6 @@ class ArmorsController extends Controller
             'armor' => $armor
         ], 200);
     }
-
     public function deleteArmor($id) 
     {
         $armor = Armors::FindOrFail($id);
@@ -84,5 +82,4 @@ class ArmorsController extends Controller
             'data' => $armors,
         ]);
     }
-
 }
