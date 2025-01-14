@@ -30,7 +30,7 @@ Asegúrate de tener instalados:
    ```bash
    php artisan passport:install
    ```
-5.Generar las claves de passport
+5. Generar claves passport
    ```bash
    php artisan passport:client --personal
    ```
