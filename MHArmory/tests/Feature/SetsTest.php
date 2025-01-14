@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 class SetsTest extends TestCase
@@ -22,6 +23,7 @@ class SetsTest extends TestCase
 
     public function test_create_set()
     {
+        Passport::actingAs($this->user);
         $response = $this->post('api/sets/create', [
             'name' => 'Rathalos Set',
             'armors' => $this->armors->pluck('id')->toArray()
@@ -39,7 +41,7 @@ class SetsTest extends TestCase
 
     public function test_invalid_set()
     {
-        $this->actingAs($this->user);
+        Passport::actingAs($this->user);
         $response = $this->post('api/sets/create', [
             'name' => 'Rathalos Set',
             'armors' => ''
@@ -53,7 +55,7 @@ class SetsTest extends TestCase
 
     public function test_update_set() 
     {
-        $this->actingAs($this->user);
+        Passport::actingAs($this->user);
         $set = $this->set;
         $updatedData = [
             'name' => 'Fatalis Set',
@@ -83,7 +85,7 @@ class SetsTest extends TestCase
 
     public function test_update_few_armors()
     {
-        $this->actingAs($this->user);
+        Passport::actingAs($this->user);
         $set = $this->set;
         $updatedData = [
             'name' => 'Fatalis Set',
@@ -102,7 +104,7 @@ class SetsTest extends TestCase
 
     public function test_delete_set() 
     {
-        $this->actingAs($this->user);
+        Passport::actingAs($this->user);
         $set = $this->set;
         $response = $this->delete("api/sets/delete/{$set->id}");
 
@@ -116,7 +118,7 @@ class SetsTest extends TestCase
 
     public function test_Delete_set_not_found()
     {
-        $this->actingAs($this->user);
+        Passport::actingAs($this->user);
         $set = 20000;
         $response = $this->delete("api/sets/delete/{$set}");
         $response->assertStatus(404);
@@ -124,7 +126,7 @@ class SetsTest extends TestCase
 
     public function test_read_set() 
     {
-        $this->actingAs($this->user);
+        Passport::actingAs($this->user);
         $response = $this->get('api/sets');
         $response->assertStatus(200);
         $response->assertJson([

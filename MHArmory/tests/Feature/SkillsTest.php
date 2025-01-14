@@ -6,6 +6,7 @@ use App\Models\Skills;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Artisan;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 class SkillsTest extends TestCase
@@ -20,7 +21,7 @@ class SkillsTest extends TestCase
 
     public function test_skills_create()
     {
-        $this->actingAs($this->adminUser);
+        Passport::actingAs($this->adminUser);
         $response = $this->post('api/skills/create', [
             'name' => "attack bonuses",
             'effect' => json_encode(["1" => "attack +2",
@@ -39,7 +40,7 @@ class SkillsTest extends TestCase
 
     public function test_skills_create_invalid_json() 
     {
-        $this->actingAs($this->adminUser);
+        Passport::actingAs($this->adminUser);
         $response = $this->post('api/skills/create', [
             'name' => 'attack bonus',
             'effect' => 'attack +5'
@@ -53,7 +54,7 @@ class SkillsTest extends TestCase
 
     public function test_skills_create_repeated_value()
     {
-        $this->actingAs($this->adminUser);
+        Passport::actingAs($this->adminUser);
         $response = $this->post('api/skills/create', [
             'name' => 'defense bonus',
             'effect' => '{"1" => "defense + 5",
@@ -68,7 +69,7 @@ class SkillsTest extends TestCase
 
     public function test_skills_update() 
     {
-        $this->actingAs($this->adminUser);
+        Passport::actingAs($this->adminUser);
         $skill = $this->skills;
         $response = $this->putJson("api/skills/update/{$skill->id}", [
             'name' => 'new defense bonus'
@@ -85,7 +86,7 @@ class SkillsTest extends TestCase
 
     public function test_skills_update_invalid_data() 
     {
-        $this->actingAs($this->adminUser);
+        Passport::actingAs($this->adminUser);
         $skill = $this->skills;
         $response = $this->putJson("api/skills/update/{$skill->id}", [
             'name' => 1,
@@ -100,7 +101,7 @@ class SkillsTest extends TestCase
 
     public function test_skill_can_be_deleted()
     {
-        $this->actingAs($this->adminUser);
+        Passport::actingAs($this->adminUser);
         $skill = $this->skills;
         $response = $this->delete("api/skills/delete/{$skill->id}");
         $response->assertStatus(200);
@@ -111,7 +112,7 @@ class SkillsTest extends TestCase
 
     public function test_skill_cant_be_deleted()
     {
-        $this->actingAs($this->adminUser);
+        Passport::actingAs($this->adminUser);
         $response = $this->delete("api/skills/delete/12324569");
         $response->assertStatus(404)
                  ->assertJson([
@@ -121,6 +122,7 @@ class SkillsTest extends TestCase
 
     public function test_read_skills() 
     {   
+        Passport::actingAs($this->adminUser);
         $response = $this->get("api/skills");
         $response->assertStatus(200)
                  ->assertJsonStructure([
