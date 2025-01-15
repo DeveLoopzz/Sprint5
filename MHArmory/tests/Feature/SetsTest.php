@@ -24,7 +24,7 @@ class SetsTest extends TestCase
     public function test_create_set()
     {
         Passport::actingAs($this->user);
-        $response = $this->post('api/sets/create', [
+        $response = $this->post('api/sets', [
             'name' => 'Rathalos Set',
             'armors' => $this->armors->pluck('id')->toArray()
         ]);
@@ -42,7 +42,7 @@ class SetsTest extends TestCase
     public function test_invalid_set()
     {
         Passport::actingAs($this->user);
-        $response = $this->post('api/sets/create', [
+        $response = $this->post('api/sets', [
             'name' => 'Rathalos Set',
             'armors' => ''
         ]);
@@ -65,7 +65,7 @@ class SetsTest extends TestCase
             $this->armors[1]->id,
             $this->armors[2]->id]
         ];
-        $response = $this->put("api/sets/update/{$set->id}", $updatedData);
+        $response = $this->put("api/sets/{$set->id}", $updatedData);
 
         $response->assertStatus(200);
         $response->assertJson([
@@ -96,7 +96,7 @@ class SetsTest extends TestCase
             ]
         ];
 
-        $response = $this->put("api/sets/update/{$set->id}", $updatedData);
+        $response = $this->put("api/sets/{$set->id}", $updatedData);
 
         $response->assertStatus(422);
     }
@@ -106,7 +106,7 @@ class SetsTest extends TestCase
     {
         Passport::actingAs($this->user);
         $set = $this->set;
-        $response = $this->delete("api/sets/delete/{$set->id}");
+        $response = $this->delete("api/sets/{$set->id}");
 
         $response->assertStatus(200);
         $this->assertDatabaseMissing('sets', ['id' => $set->id]);
@@ -120,7 +120,7 @@ class SetsTest extends TestCase
     {
         Passport::actingAs($this->user);
         $set = 20000;
-        $response = $this->delete("api/sets/delete/{$set}");
+        $response = $this->delete("api/sets/{$set}");
         $response->assertStatus(404);
     }
 

@@ -28,7 +28,7 @@ class AuthTest extends TestCase
 
     public function test_user_register() 
     {
-        $response = $this->post('api/users/register', [
+        $response = $this->post('api/register', [
             'name' => 'test',
             'email' => 'email@test.com',
             'password' => 'testing'
@@ -45,7 +45,7 @@ class AuthTest extends TestCase
 
     public function test_user_invalid_register() 
     {
-        $invalidData = $this->postJson('api/users/register',[
+        $invalidData = $this->postJson('api/register',[
             'name' => 'test',
             'email' => '',
             'password' => '123'
@@ -60,7 +60,7 @@ class AuthTest extends TestCase
     public function test_user_can_login() 
     {
         $user = $this->user;
-        $response = $this->post('api/users/login', [
+        $response = $this->post('api/login', [
             'email' => $user->email,
             'password' => 'password'
         ]);
@@ -76,7 +76,7 @@ class AuthTest extends TestCase
 
     public function  test_user_cant_login() 
     {
-        $invalidData = $this->post('api/users/login', [
+        $invalidData = $this->post('api/login', [
             'email' => 'invalidemail@notfound.com',
             'password' => '1234567'
         ]);
@@ -89,14 +89,14 @@ class AuthTest extends TestCase
     public function test_user_can_logout() 
     {
         $user = $this->user;
-        $response = $this->post('api/users/login', [
+        $response = $this->post('api/login', [
             'email' => $user->email,
             'password' => 'password'
         ]);
 
         $token = $response->json('token');
 
-        $responseLogout = $this->post('api/users/logout',[], [
+        $responseLogout = $this->post('api/logout',[], [
             'Authorization' => 'Bearer ' . $token
         ]);
 

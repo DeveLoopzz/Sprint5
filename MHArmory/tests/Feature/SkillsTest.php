@@ -22,7 +22,7 @@ class SkillsTest extends TestCase
     public function test_skills_create()
     {
         Passport::actingAs($this->adminUser);
-        $response = $this->post('api/skills/create', [
+        $response = $this->post('api/skills', [
             'name' => "attack bonuses",
             'effect' => json_encode(["1" => "attack +2",
              "2" =>"attack +10"])
@@ -41,7 +41,7 @@ class SkillsTest extends TestCase
     public function test_skills_create_invalid_json() 
     {
         Passport::actingAs($this->adminUser);
-        $response = $this->post('api/skills/create', [
+        $response = $this->post('api/skills', [
             'name' => 'attack bonus',
             'effect' => 'attack +5'
         ]);
@@ -55,7 +55,7 @@ class SkillsTest extends TestCase
     public function test_skills_create_repeated_value()
     {
         Passport::actingAs($this->adminUser);
-        $response = $this->post('api/skills/create', [
+        $response = $this->post('api/skills', [
             'name' => 'defense bonus',
             'effect' => '{"1" => "defense + 5",
              "2" =>"defense +10"}'
@@ -71,7 +71,7 @@ class SkillsTest extends TestCase
     {
         Passport::actingAs($this->adminUser);
         $skill = $this->skills;
-        $response = $this->putJson("api/skills/update/{$skill->id}", [
+        $response = $this->putJson("api/skills/{$skill->id}", [
             'name' => 'new defense bonus'
         ]);
 
@@ -88,7 +88,7 @@ class SkillsTest extends TestCase
     {
         Passport::actingAs($this->adminUser);
         $skill = $this->skills;
-        $response = $this->putJson("api/skills/update/{$skill->id}", [
+        $response = $this->putJson("api/skills/{$skill->id}", [
             'name' => 1,
             'effect' => ''
         ]);
@@ -103,7 +103,7 @@ class SkillsTest extends TestCase
     {
         Passport::actingAs($this->adminUser);
         $skill = $this->skills;
-        $response = $this->delete("api/skills/delete/{$skill->id}");
+        $response = $this->delete("api/skills/{$skill->id}");
         $response->assertStatus(200);
         $this->assertDatabaseMissing('skills', [
                     'id' => $skill->id
@@ -113,7 +113,7 @@ class SkillsTest extends TestCase
     public function test_skill_cant_be_deleted()
     {
         Passport::actingAs($this->adminUser);
-        $response = $this->delete("api/skills/delete/12324569");
+        $response = $this->delete("api/skills/12324569");
         $response->assertStatus(404)
                  ->assertJson([
                     'message' => 'Not Found'
