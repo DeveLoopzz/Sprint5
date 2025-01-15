@@ -1,0 +1,749 @@
+{
+	"info": {
+		"_postman_id": "f35ca9b4-39fb-4eba-8260-72b76735445c",
+		"name": "MHArmory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39871271"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Sets",
+					"item": [
+						{
+							"name": "Read",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzE1YmI2NGVkZjY2NzJmZTRmMTU2NTQwZGI2NDVhMmUyNGM3MzAxMGM4YjE4YTQ5YzY3OGVmZDViZDE4ZTYxMzI3YThkNGI3ZGYwYmIwMWUiLCJpYXQiOjE3MzY4NTYxOTMuODg4MTc3LCJuYmYiOjE3MzY4NTYxOTMuODg4MTgxLCJleHAiOjE3NjgzOTIxOTMuODcxODI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.oDqAoHC27S_s029AB_E1jsKMegTmwshw3Utj_c1woQAGOVHGY7XpsKjR5C7fAWFnIrY8OqMrxeQd6MP8BVs8BRiTEg7kXdIpR4OqGA2VurTYpZcRv7ahAjZVyRxEzMCnJvBSePro9VKNlGDPXINh9yyyQ8euHqBoxf5sRqfpgmCy9_UZ4HPiy6VetV_kAj2W8P0dj4NVeTdoWWDCUv3A_AEFNGco6MmhpHRZTU97L3ZNL83jOxEBFmLvonbAbJW_VNEt6Pb1PQ_-wtLhjQqVbky4f7zTUm26LLYZ3qfd_HI__m91EcrJMCeyWlzQzvJs5fmGCbIU-gBOzkTQxjddLemDKX8qj6CQlJ-UXty1KHo-6fP4Szw4CtceBenTgHDaqIW1AiT_63p7sjbkdo2ldUBJLf0snpYm41Q2TQtOcvLAnQ5uu-c-w8047wwcuqBiEs3gKotgmPSLHmyES7KdC2AtPytI4HMLboucSV7LF4CDeLkiXgIsyA729IO76HdeWb0yJO89roC_L_8Kr6QSCZU1Sz_wsRQXpE4Tp6bcYmSRIb7uY7i-ZKYXpxAUS30ntldix2mklsMY4G8tuFs9MiCnw7IGVLZLyO7gLPEG5Eo_XHpGp5AcTRDAHHMFg9JmbnIXGCGYbt3dyTrSQ8ag5LRt36tUWMPSag0yOBLH8II",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/sets",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"sets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzE1YmI2NGVkZjY2NzJmZTRmMTU2NTQwZGI2NDVhMmUyNGM3MzAxMGM4YjE4YTQ5YzY3OGVmZDViZDE4ZTYxMzI3YThkNGI3ZGYwYmIwMWUiLCJpYXQiOjE3MzY4NTYxOTMuODg4MTc3LCJuYmYiOjE3MzY4NTYxOTMuODg4MTgxLCJleHAiOjE3NjgzOTIxOTMuODcxODI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.oDqAoHC27S_s029AB_E1jsKMegTmwshw3Utj_c1woQAGOVHGY7XpsKjR5C7fAWFnIrY8OqMrxeQd6MP8BVs8BRiTEg7kXdIpR4OqGA2VurTYpZcRv7ahAjZVyRxEzMCnJvBSePro9VKNlGDPXINh9yyyQ8euHqBoxf5sRqfpgmCy9_UZ4HPiy6VetV_kAj2W8P0dj4NVeTdoWWDCUv3A_AEFNGco6MmhpHRZTU97L3ZNL83jOxEBFmLvonbAbJW_VNEt6Pb1PQ_-wtLhjQqVbky4f7zTUm26LLYZ3qfd_HI__m91EcrJMCeyWlzQzvJs5fmGCbIU-gBOzkTQxjddLemDKX8qj6CQlJ-UXty1KHo-6fP4Szw4CtceBenTgHDaqIW1AiT_63p7sjbkdo2ldUBJLf0snpYm41Q2TQtOcvLAnQ5uu-c-w8047wwcuqBiEs3gKotgmPSLHmyES7KdC2AtPytI4HMLboucSV7LF4CDeLkiXgIsyA729IO76HdeWb0yJO89roC_L_8Kr6QSCZU1Sz_wsRQXpE4Tp6bcYmSRIb7uY7i-ZKYXpxAUS30ntldix2mklsMY4G8tuFs9MiCnw7IGVLZLyO7gLPEG5Eo_XHpGp5AcTRDAHHMFg9JmbnIXGCGYbt3dyTrSQ8ag5LRt36tUWMPSag0yOBLH8II",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Fatalis Set\",\r\n    \"armors\" : [2,3,4,5,6]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/sets",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"sets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzE1YmI2NGVkZjY2NzJmZTRmMTU2NTQwZGI2NDVhMmUyNGM3MzAxMGM4YjE4YTQ5YzY3OGVmZDViZDE4ZTYxMzI3YThkNGI3ZGYwYmIwMWUiLCJpYXQiOjE3MzY4NTYxOTMuODg4MTc3LCJuYmYiOjE3MzY4NTYxOTMuODg4MTgxLCJleHAiOjE3NjgzOTIxOTMuODcxODI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.oDqAoHC27S_s029AB_E1jsKMegTmwshw3Utj_c1woQAGOVHGY7XpsKjR5C7fAWFnIrY8OqMrxeQd6MP8BVs8BRiTEg7kXdIpR4OqGA2VurTYpZcRv7ahAjZVyRxEzMCnJvBSePro9VKNlGDPXINh9yyyQ8euHqBoxf5sRqfpgmCy9_UZ4HPiy6VetV_kAj2W8P0dj4NVeTdoWWDCUv3A_AEFNGco6MmhpHRZTU97L3ZNL83jOxEBFmLvonbAbJW_VNEt6Pb1PQ_-wtLhjQqVbky4f7zTUm26LLYZ3qfd_HI__m91EcrJMCeyWlzQzvJs5fmGCbIU-gBOzkTQxjddLemDKX8qj6CQlJ-UXty1KHo-6fP4Szw4CtceBenTgHDaqIW1AiT_63p7sjbkdo2ldUBJLf0snpYm41Q2TQtOcvLAnQ5uu-c-w8047wwcuqBiEs3gKotgmPSLHmyES7KdC2AtPytI4HMLboucSV7LF4CDeLkiXgIsyA729IO76HdeWb0yJO89roC_L_8Kr6QSCZU1Sz_wsRQXpE4Tp6bcYmSRIb7uY7i-ZKYXpxAUS30ntldix2mklsMY4G8tuFs9MiCnw7IGVLZLyO7gLPEG5Eo_XHpGp5AcTRDAHHMFg9JmbnIXGCGYbt3dyTrSQ8ag5LRt36tUWMPSag0yOBLH8II",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Fatalis Sets\",\r\n    \"armors\" : [4,3,2,5,6]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/sets/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"sets",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzE1YmI2NGVkZjY2NzJmZTRmMTU2NTQwZGI2NDVhMmUyNGM3MzAxMGM4YjE4YTQ5YzY3OGVmZDViZDE4ZTYxMzI3YThkNGI3ZGYwYmIwMWUiLCJpYXQiOjE3MzY4NTYxOTMuODg4MTc3LCJuYmYiOjE3MzY4NTYxOTMuODg4MTgxLCJleHAiOjE3NjgzOTIxOTMuODcxODI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.oDqAoHC27S_s029AB_E1jsKMegTmwshw3Utj_c1woQAGOVHGY7XpsKjR5C7fAWFnIrY8OqMrxeQd6MP8BVs8BRiTEg7kXdIpR4OqGA2VurTYpZcRv7ahAjZVyRxEzMCnJvBSePro9VKNlGDPXINh9yyyQ8euHqBoxf5sRqfpgmCy9_UZ4HPiy6VetV_kAj2W8P0dj4NVeTdoWWDCUv3A_AEFNGco6MmhpHRZTU97L3ZNL83jOxEBFmLvonbAbJW_VNEt6Pb1PQ_-wtLhjQqVbky4f7zTUm26LLYZ3qfd_HI__m91EcrJMCeyWlzQzvJs5fmGCbIU-gBOzkTQxjddLemDKX8qj6CQlJ-UXty1KHo-6fP4Szw4CtceBenTgHDaqIW1AiT_63p7sjbkdo2ldUBJLf0snpYm41Q2TQtOcvLAnQ5uu-c-w8047wwcuqBiEs3gKotgmPSLHmyES7KdC2AtPytI4HMLboucSV7LF4CDeLkiXgIsyA729IO76HdeWb0yJO89roC_L_8Kr6QSCZU1Sz_wsRQXpE4Tp6bcYmSRIb7uY7i-ZKYXpxAUS30ntldix2mklsMY4G8tuFs9MiCnw7IGVLZLyO7gLPEG5Eo_XHpGp5AcTRDAHHMFg9JmbnIXGCGYbt3dyTrSQ8ag5LRt36tUWMPSag0yOBLH8II",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Fatalis Sets\",\r\n    \"armors\" : [4,3,2,5,6]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/sets/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"sets",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@example.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@example.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"newuser\",\r\n    \"email\": \"test@exampless.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Skills",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzE1YmI2NGVkZjY2NzJmZTRmMTU2NTQwZGI2NDVhMmUyNGM3MzAxMGM4YjE4YTQ5YzY3OGVmZDViZDE4ZTYxMzI3YThkNGI3ZGYwYmIwMWUiLCJpYXQiOjE3MzY4NTYxOTMuODg4MTc3LCJuYmYiOjE3MzY4NTYxOTMuODg4MTgxLCJleHAiOjE3NjgzOTIxOTMuODcxODI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.oDqAoHC27S_s029AB_E1jsKMegTmwshw3Utj_c1woQAGOVHGY7XpsKjR5C7fAWFnIrY8OqMrxeQd6MP8BVs8BRiTEg7kXdIpR4OqGA2VurTYpZcRv7ahAjZVyRxEzMCnJvBSePro9VKNlGDPXINh9yyyQ8euHqBoxf5sRqfpgmCy9_UZ4HPiy6VetV_kAj2W8P0dj4NVeTdoWWDCUv3A_AEFNGco6MmhpHRZTU97L3ZNL83jOxEBFmLvonbAbJW_VNEt6Pb1PQ_-wtLhjQqVbky4f7zTUm26LLYZ3qfd_HI__m91EcrJMCeyWlzQzvJs5fmGCbIU-gBOzkTQxjddLemDKX8qj6CQlJ-UXty1KHo-6fP4Szw4CtceBenTgHDaqIW1AiT_63p7sjbkdo2ldUBJLf0snpYm41Q2TQtOcvLAnQ5uu-c-w8047wwcuqBiEs3gKotgmPSLHmyES7KdC2AtPytI4HMLboucSV7LF4CDeLkiXgIsyA729IO76HdeWb0yJO89roC_L_8Kr6QSCZU1Sz_wsRQXpE4Tp6bcYmSRIb7uY7i-ZKYXpxAUS30ntldix2mklsMY4G8tuFs9MiCnw7IGVLZLyO7gLPEG5Eo_XHpGp5AcTRDAHHMFg9JmbnIXGCGYbt3dyTrSQ8ag5LRt36tUWMPSag0yOBLH8II",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"attack bonuse\",\r\n    \"effect\": \"{\\\"1\\\": \\\"attack +5\\\", \\\"2\\\": \\\"attack +12\\\"}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/skills",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"skills"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzE1YmI2NGVkZjY2NzJmZTRmMTU2NTQwZGI2NDVhMmUyNGM3MzAxMGM4YjE4YTQ5YzY3OGVmZDViZDE4ZTYxMzI3YThkNGI3ZGYwYmIwMWUiLCJpYXQiOjE3MzY4NTYxOTMuODg4MTc3LCJuYmYiOjE3MzY4NTYxOTMuODg4MTgxLCJleHAiOjE3NjgzOTIxOTMuODcxODI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.oDqAoHC27S_s029AB_E1jsKMegTmwshw3Utj_c1woQAGOVHGY7XpsKjR5C7fAWFnIrY8OqMrxeQd6MP8BVs8BRiTEg7kXdIpR4OqGA2VurTYpZcRv7ahAjZVyRxEzMCnJvBSePro9VKNlGDPXINh9yyyQ8euHqBoxf5sRqfpgmCy9_UZ4HPiy6VetV_kAj2W8P0dj4NVeTdoWWDCUv3A_AEFNGco6MmhpHRZTU97L3ZNL83jOxEBFmLvonbAbJW_VNEt6Pb1PQ_-wtLhjQqVbky4f7zTUm26LLYZ3qfd_HI__m91EcrJMCeyWlzQzvJs5fmGCbIU-gBOzkTQxjddLemDKX8qj6CQlJ-UXty1KHo-6fP4Szw4CtceBenTgHDaqIW1AiT_63p7sjbkdo2ldUBJLf0snpYm41Q2TQtOcvLAnQ5uu-c-w8047wwcuqBiEs3gKotgmPSLHmyES7KdC2AtPytI4HMLboucSV7LF4CDeLkiXgIsyA729IO76HdeWb0yJO89roC_L_8Kr6QSCZU1Sz_wsRQXpE4Tp6bcYmSRIb7uY7i-ZKYXpxAUS30ntldix2mklsMY4G8tuFs9MiCnw7IGVLZLyO7gLPEG5Eo_XHpGp5AcTRDAHHMFg9JmbnIXGCGYbt3dyTrSQ8ag5LRt36tUWMPSag0yOBLH8II",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"attack bonus\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/skills/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"skills",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzE1YmI2NGVkZjY2NzJmZTRmMTU2NTQwZGI2NDVhMmUyNGM3MzAxMGM4YjE4YTQ5YzY3OGVmZDViZDE4ZTYxMzI3YThkNGI3ZGYwYmIwMWUiLCJpYXQiOjE3MzY4NTYxOTMuODg4MTc3LCJuYmYiOjE3MzY4NTYxOTMuODg4MTgxLCJleHAiOjE3NjgzOTIxOTMuODcxODI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.oDqAoHC27S_s029AB_E1jsKMegTmwshw3Utj_c1woQAGOVHGY7XpsKjR5C7fAWFnIrY8OqMrxeQd6MP8BVs8BRiTEg7kXdIpR4OqGA2VurTYpZcRv7ahAjZVyRxEzMCnJvBSePro9VKNlGDPXINh9yyyQ8euHqBoxf5sRqfpgmCy9_UZ4HPiy6VetV_kAj2W8P0dj4NVeTdoWWDCUv3A_AEFNGco6MmhpHRZTU97L3ZNL83jOxEBFmLvonbAbJW_VNEt6Pb1PQ_-wtLhjQqVbky4f7zTUm26LLYZ3qfd_HI__m91EcrJMCeyWlzQzvJs5fmGCbIU-gBOzkTQxjddLemDKX8qj6CQlJ-UXty1KHo-6fP4Szw4CtceBenTgHDaqIW1AiT_63p7sjbkdo2ldUBJLf0snpYm41Q2TQtOcvLAnQ5uu-c-w8047wwcuqBiEs3gKotgmPSLHmyES7KdC2AtPytI4HMLboucSV7LF4CDeLkiXgIsyA729IO76HdeWb0yJO89roC_L_8Kr6QSCZU1Sz_wsRQXpE4Tp6bcYmSRIb7uY7i-ZKYXpxAUS30ntldix2mklsMY4G8tuFs9MiCnw7IGVLZLyO7gLPEG5Eo_XHpGp5AcTRDAHHMFg9JmbnIXGCGYbt3dyTrSQ8ag5LRt36tUWMPSag0yOBLH8II",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"attack bonus\",\r\n    \"effect\": \"{\\\"1\\\": \\\"attack +5\\\", \\\"2\\\": \\\"attack +10\\\"}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/skills/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"skills",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzE1YmI2NGVkZjY2NzJmZTRmMTU2NTQwZGI2NDVhMmUyNGM3MzAxMGM4YjE4YTQ5YzY3OGVmZDViZDE4ZTYxMzI3YThkNGI3ZGYwYmIwMWUiLCJpYXQiOjE3MzY4NTYxOTMuODg4MTc3LCJuYmYiOjE3MzY4NTYxOTMuODg4MTgxLCJleHAiOjE3NjgzOTIxOTMuODcxODI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.oDqAoHC27S_s029AB_E1jsKMegTmwshw3Utj_c1woQAGOVHGY7XpsKjR5C7fAWFnIrY8OqMrxeQd6MP8BVs8BRiTEg7kXdIpR4OqGA2VurTYpZcRv7ahAjZVyRxEzMCnJvBSePro9VKNlGDPXINh9yyyQ8euHqBoxf5sRqfpgmCy9_UZ4HPiy6VetV_kAj2W8P0dj4NVeTdoWWDCUv3A_AEFNGco6MmhpHRZTU97L3ZNL83jOxEBFmLvonbAbJW_VNEt6Pb1PQ_-wtLhjQqVbky4f7zTUm26LLYZ3qfd_HI__m91EcrJMCeyWlzQzvJs5fmGCbIU-gBOzkTQxjddLemDKX8qj6CQlJ-UXty1KHo-6fP4Szw4CtceBenTgHDaqIW1AiT_63p7sjbkdo2ldUBJLf0snpYm41Q2TQtOcvLAnQ5uu-c-w8047wwcuqBiEs3gKotgmPSLHmyES7KdC2AtPytI4HMLboucSV7LF4CDeLkiXgIsyA729IO76HdeWb0yJO89roC_L_8Kr6QSCZU1Sz_wsRQXpE4Tp6bcYmSRIb7uY7i-ZKYXpxAUS30ntldix2mklsMY4G8tuFs9MiCnw7IGVLZLyO7gLPEG5Eo_XHpGp5AcTRDAHHMFg9JmbnIXGCGYbt3dyTrSQ8ag5LRt36tUWMPSag0yOBLH8II",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/skills",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"skills"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Armors",
+					"item": [
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzE1YmI2NGVkZjY2NzJmZTRmMTU2NTQwZGI2NDVhMmUyNGM3MzAxMGM4YjE4YTQ5YzY3OGVmZDViZDE4ZTYxMzI3YThkNGI3ZGYwYmIwMWUiLCJpYXQiOjE3MzY4NTYxOTMuODg4MTc3LCJuYmYiOjE3MzY4NTYxOTMuODg4MTgxLCJleHAiOjE3NjgzOTIxOTMuODcxODI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.oDqAoHC27S_s029AB_E1jsKMegTmwshw3Utj_c1woQAGOVHGY7XpsKjR5C7fAWFnIrY8OqMrxeQd6MP8BVs8BRiTEg7kXdIpR4OqGA2VurTYpZcRv7ahAjZVyRxEzMCnJvBSePro9VKNlGDPXINh9yyyQ8euHqBoxf5sRqfpgmCy9_UZ4HPiy6VetV_kAj2W8P0dj4NVeTdoWWDCUv3A_AEFNGco6MmhpHRZTU97L3ZNL83jOxEBFmLvonbAbJW_VNEt6Pb1PQ_-wtLhjQqVbky4f7zTUm26LLYZ3qfd_HI__m91EcrJMCeyWlzQzvJs5fmGCbIU-gBOzkTQxjddLemDKX8qj6CQlJ-UXty1KHo-6fP4Szw4CtceBenTgHDaqIW1AiT_63p7sjbkdo2ldUBJLf0snpYm41Q2TQtOcvLAnQ5uu-c-w8047wwcuqBiEs3gKotgmPSLHmyES7KdC2AtPytI4HMLboucSV7LF4CDeLkiXgIsyA729IO76HdeWb0yJO89roC_L_8Kr6QSCZU1Sz_wsRQXpE4Tp6bcYmSRIb7uY7i-ZKYXpxAUS30ntldix2mklsMY4G8tuFs9MiCnw7IGVLZLyO7gLPEG5Eo_XHpGp5AcTRDAHHMFg9JmbnIXGCGYbt3dyTrSQ8ag5LRt36tUWMPSag0yOBLH8II",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Armor new new\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/armors/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"armors",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzE1YmI2NGVkZjY2NzJmZTRmMTU2NTQwZGI2NDVhMmUyNGM3MzAxMGM4YjE4YTQ5YzY3OGVmZDViZDE4ZTYxMzI3YThkNGI3ZGYwYmIwMWUiLCJpYXQiOjE3MzY4NTYxOTMuODg4MTc3LCJuYmYiOjE3MzY4NTYxOTMuODg4MTgxLCJleHAiOjE3NjgzOTIxOTMuODcxODI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.oDqAoHC27S_s029AB_E1jsKMegTmwshw3Utj_c1woQAGOVHGY7XpsKjR5C7fAWFnIrY8OqMrxeQd6MP8BVs8BRiTEg7kXdIpR4OqGA2VurTYpZcRv7ahAjZVyRxEzMCnJvBSePro9VKNlGDPXINh9yyyQ8euHqBoxf5sRqfpgmCy9_UZ4HPiy6VetV_kAj2W8P0dj4NVeTdoWWDCUv3A_AEFNGco6MmhpHRZTU97L3ZNL83jOxEBFmLvonbAbJW_VNEt6Pb1PQ_-wtLhjQqVbky4f7zTUm26LLYZ3qfd_HI__m91EcrJMCeyWlzQzvJs5fmGCbIU-gBOzkTQxjddLemDKX8qj6CQlJ-UXty1KHo-6fP4Szw4CtceBenTgHDaqIW1AiT_63p7sjbkdo2ldUBJLf0snpYm41Q2TQtOcvLAnQ5uu-c-w8047wwcuqBiEs3gKotgmPSLHmyES7KdC2AtPytI4HMLboucSV7LF4CDeLkiXgIsyA729IO76HdeWb0yJO89roC_L_8Kr6QSCZU1Sz_wsRQXpE4Tp6bcYmSRIb7uY7i-ZKYXpxAUS30ntldix2mklsMY4G8tuFs9MiCnw7IGVLZLyO7gLPEG5Eo_XHpGp5AcTRDAHHMFg9JmbnIXGCGYbt3dyTrSQ8ag5LRt36tUWMPSag0yOBLH8II",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Iron Chest\",\r\n    \"type\": \"Chest\",\r\n    \"skills\": [\r\n        {\r\n            \"id\": 2,\r\n            \"level\": 2\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"level\": 3\r\n        },\r\n        {\r\n            \"id\": 6,\r\n            \"level\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/armors",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"armors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzZmZTlmNjMwOWNiNDU0NzdlODQ4Y2FjOGIzNjM5ZGE4YWJhN2Q0MGI1MzBmNGVlMTYyNTI1NjEzNzgxYzA4ZGI0NThjMzYyYTAzYTU1N2IiLCJpYXQiOjE3MzY4NDg3MTEuOTIxOTIyLCJuYmYiOjE3MzY4NDg3MTEuOTIxOTI1LCJleHAiOjE3NjgzODQ3MTEuOTA2NTA5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.RbuwSgK7mtW91a1sDYsAj_HdTIXB6ejL8teesLGdfN-qtyPmO-ns2HFQY-DTX0GX4CHM4nKxFAPU1Zf2VN6jnT-5KHWAz7tKinViUfHFiaqQt3JEAgJfRPqNWIQei6Xn1ZAiN9r6TDuxh6RG6CRKfG2hAum9R_XFVQWMssblT3q0Y21QL4CKcx4sfDDek18uxeT1o0c7Ag7kssfw081zGzhVonkNZmYTG61w1KbvGJqDWx34OyQfWEJ9SLrt_i8GhAIwIAvHJ3qjZrqGjcqkqILZvwLacaXMNIuCsBsS8sw3eCUNsdKhECgybGKC8FIvDAGm1H63x9zLlyffZoabgArkzWoXOTEu0u0j6OtBZamrtITnL9vQQz7okyqwsqql-0hxOIwh6cmw5AMjV9fwk4Nji6ttQQZRdbt9ioab_cTw83zn4snGZWoT-I6LlPbvxdvvoGEsZOCyf1bU35V4qZjoYwTg0AOT8TntWvrd2N_ivt81CNAN1O4D8qtfP17godKz61xU3S1jTJNQcH8IQKd4knTdfZhv_oQbUMPywpqq40iycAz5XtEvmBrqFb4lxPnTU9O7Lq6gzBVjv26sf30YWhv4k_yqmXkIJ7l5wobyO4warj3kq8my1VeSGH2UGwAG3G-4-iGCGa_yNBqWIbDDLHJRWMrp-5Rcas4a9Mg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/armors/delete/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"armors",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzE1YmI2NGVkZjY2NzJmZTRmMTU2NTQwZGI2NDVhMmUyNGM3MzAxMGM4YjE4YTQ5YzY3OGVmZDViZDE4ZTYxMzI3YThkNGI3ZGYwYmIwMWUiLCJpYXQiOjE3MzY4NTYxOTMuODg4MTc3LCJuYmYiOjE3MzY4NTYxOTMuODg4MTgxLCJleHAiOjE3NjgzOTIxOTMuODcxODI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.oDqAoHC27S_s029AB_E1jsKMegTmwshw3Utj_c1woQAGOVHGY7XpsKjR5C7fAWFnIrY8OqMrxeQd6MP8BVs8BRiTEg7kXdIpR4OqGA2VurTYpZcRv7ahAjZVyRxEzMCnJvBSePro9VKNlGDPXINh9yyyQ8euHqBoxf5sRqfpgmCy9_UZ4HPiy6VetV_kAj2W8P0dj4NVeTdoWWDCUv3A_AEFNGco6MmhpHRZTU97L3ZNL83jOxEBFmLvonbAbJW_VNEt6Pb1PQ_-wtLhjQqVbky4f7zTUm26LLYZ3qfd_HI__m91EcrJMCeyWlzQzvJs5fmGCbIU-gBOzkTQxjddLemDKX8qj6CQlJ-UXty1KHo-6fP4Szw4CtceBenTgHDaqIW1AiT_63p7sjbkdo2ldUBJLf0snpYm41Q2TQtOcvLAnQ5uu-c-w8047wwcuqBiEs3gKotgmPSLHmyES7KdC2AtPytI4HMLboucSV7LF4CDeLkiXgIsyA729IO76HdeWb0yJO89roC_L_8Kr6QSCZU1Sz_wsRQXpE4Tp6bcYmSRIb7uY7i-ZKYXpxAUS30ntldix2mklsMY4G8tuFs9MiCnw7IGVLZLyO7gLPEG5Eo_XHpGp5AcTRDAHHMFg9JmbnIXGCGYbt3dyTrSQ8ag5LRt36tUWMPSag0yOBLH8II",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/armors",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"armors"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGQ4YWNkZjQwYmZjZWJjZmUzZjE0MDEyZWFkMWIxZTM0ODljMDQzNDBmOTdmZmQ3M2JiMWU2ZmQwMTY0ODJlOWY3NzU2ZDlhMjQ2ZGNlYjciLCJpYXQiOjE3MzI2MjMwNTEuNDE2Mjg0LCJuYmYiOjE3MzI2MjMwNTEuNDE2Mjg4LCJleHAiOjE3NjQxNTkwNTEuMzk3MjE2LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.grAOgyyV8ph-Bk0N5NqcqqAV4Y7r38wEQt9aCbESn0n_Q_Xp-OLh8Hwo_OsrhuY4f4pG0u5iAN_GeM01EyETAQk4IeacJcubNA3bgdtJ4i4IJHrK-T7Ug6D0mc0o2fALqnMmxDSQSZsEhdIgq4wtkgDPA9kbjZEhmLY5GRrLx_72PI_uli2Tdl2XDUreErauJWyBgjOJT-gVdA039HHyNk1r00IkmrG0S0bzJ-k3liAxIOnHuuaJtPm33Uk9aeMuKgbAz24sYb1nUs6636yuxLCGDqdTFFJuuWxz4He7dmWGIwoZUCLcKXvTAFNmBnxSh0jWqjnuuhb1fLXkLOIDEIeSSTy40TP-m3klEFV0YqcWAZk_GwUCXSOFs39w3WPf29pDczoB25_lQD0z5B2hAql9hjZCeDatRoeL0mUvoB8YJe08Dab8ZnuJfBquYH8h0eFPjWtgfHjQe1x3Al8aRLkHJ9VEquYzLXYd837J7TSBG6Vh8gogeN5pBCb7vabB6vdajS9MYPDaWmOgLCrhcJaNnHKD6c5QNquG0UgqNY01Q3J-dLfYEAYTHzZkqBB94auQEPWICx6H2RieDW9zNT6lftHSgV_uMOEv-ZAD94aJZOenuizdwBqTMeeJxfWwmuggYwdJiw2Ekj0GhfxoKNVrIKj98Rn1NIfvvSYkyOI"
+		},
+		{
+			"key": "tokenuser",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGMxM2JmYmVhOWJkYTNmMGNkYTAzY2VkOGRhZmFmOTE1ZWYyNjNkYWZiYWE1YjE3MWZmOWM0MDdiYTkxNWU5MDc2ZjE1ZWNkZGUyMDk2NjUiLCJpYXQiOjE3MzY3NjU3ODMuNTE2ODY2LCJuYmYiOjE3MzY3NjU3ODMuNTE2ODcxLCJleHAiOjE3NjgzMDE3ODMuNDg5NDY3LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.QXz0pK0VIuACssGALmXmpj6HT8MdpHtAq-coFeHdlDIxAboue74dvd6CcsNBtGk9M5p9RmuOO9ltqB0ijGrOYyDUmOq0oFfpcJBWcOpwkmAVHr_7saDv4xjfC3_qG8p4ebo75F372husmN1d7dk8uKRkMrn-cBvS9R6NPOU5bm8IF04pJnXF5pt7bERQ06Iojglqj4vlq5mEhw7ndI75gnPMzglwj-eEEy4-JmBrVUT0Bjt-b-T1g5KA6Kkvo-hMob_mt0pSVIzk7F-Knim8iSlJGlg1aGjkW6WvfoI-ESfa87G6dVS-ebzlVXca2IyIna30TPBFZDzZiW_hUcQ43z4P4Oa2rhhvPkaZ5ZRXsqTVmXtfhsInnYiK835NA9b8TAHEwJ49ouVEeq3QmWROYJmVJ0IKKU0Hox2t5Dgm7ci466gypHh06NrS-BNmdRDacrsrWO_8UT8vzFELqJKinZg30GfwUmSwaNTuCn0OyEgZ7dRsYXbz0ZqVV6fKTDiwrwyefuI-L9TJzibVB1ZCF6EB66JGSQmPVBUZyKo1Yq7CBzqKzDWpU98E-GKzwe2XXdKT-o4n3NG6w1oesZ3vlWH6x8LOd63d9eLIifhMaVRbLJghhXNEDC9rHjtrg-nNPS2n4Z3YOceRGILG4JrmgkP_OptgtpYXSdLVIL70Uvc"
+		},
+		{
+			"key": "TokenAdmin",
+			"value": "QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwian"
+		}
+	]
+}
